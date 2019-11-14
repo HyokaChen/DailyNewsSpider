@@ -1,0 +1,91 @@
+{
+  "START_URL": "https://www.dmzj.com/",
+  "SPIDER_NAME": "DmzjNewsSpider",
+  "SITE_NAME": "dmzj",
+  "REFERER": "https://www.dmzj.com/",
+  "METHOD": "GET",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "method": "GET",
+      "process": "PROCESSES.1",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "https://news.dmzj.com/",
+      "parameters": "RESULTS.1",
+      "process": "PROCESSES.2",
+      "return_type": "html",
+      "result": "RESULTS.2",
+      "parallel_request": "REQUESTS.3",
+      "next_request": "REQUESTS.4",
+      "stopped": "max_page"
+    },
+    {
+      "request_id": 3,
+      "start_url": "https://news.dmzj.com/p{page}.html",
+      "parameters": "RESULTS.2.page",
+      "process": "PROCESSES.2",
+      "return_type": "html",
+      "result": "RESULTS.2",
+      "next_request": "REQUESTS.4",
+      "is_multiple": true,
+      "stopped": "max_page"
+    },
+    {
+      "request_id": 4,
+      "start_url": "RESULTS.2.url",
+      "result": "RESULTS.3",
+      "return_type": "css",
+      "is_duplicate": true,
+      "return_item": "items.HotNewsItem"
+    }
+  ],
+  "PROCESSES": [
+    {
+      "process_id": 1,
+      "process_method": "spiders.new_tencent_spider.first_process"
+    },
+    {
+      "process_id": 2,
+      "process_method": "spiders.new_tencent_spider.second_process",
+      "parameters": "RESULTS.2.page"
+    }
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "page": 0,
+      "global_parameter": "page"
+    },
+    {
+      "result_id": 2,
+      "page": "{page} + 1",
+      "max_page": "2",
+      "title": "//div[@class='li_img_de']/h3/a/text()#list",
+      "url": "//div[@class='li_img_de']/h3/a/@href#list",
+      "author": "//div[@class='li_img_de']/p[@class='head_con_p_o']/span[3]/text()#list",
+      "description": "//p[@class='com_about']/text()#list",
+      "news_time": "//div[@class='li_img_de']/p[@class='head_con_p_o']/span[1]/text()#list",
+      "global_parameter": "page"
+    },
+    {
+      "result_id": 3,
+      "content": "div.news_content_con::text"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 20000,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@animation",
+  "PRIORITY": 1
+}
+

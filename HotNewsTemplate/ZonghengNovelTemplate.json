@@ -1,0 +1,75 @@
+{
+  "START_URL": "http://www.zongheng.com/",
+  "SPIDER_NAME": "ZonghengNovelSpider",
+  "SITE_NAME": "qidian",
+  "REFERER": "http://www.zongheng.com/",
+  "METHOD": "GET",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "method": "GET",
+      "process": "PROCESSES.1",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "http://book.zongheng.com/store/c0/c0/b0/u0/p{_page}/v9/s1/t0/u0/i1/ALL.html",
+      "parameters": "RESULTS.1._page",
+      "process": "PROCESSES.2",
+      "return_type": "html",
+      "result": "RESULTS.2",
+      "next_request": "REQUESTS.3"
+    },
+    {
+      "request_id": 3,
+      "start_url": "RESULTS.2.url",
+      "result": "RESULTS.3",
+      "return_type": "css",
+      "is_duplicate": true,
+      "return_item": "items.FinishNovelItem"
+    }
+  ],
+  "PROCESSES": [
+    {
+      "process_id": 1,
+      "process_method": "spiders.new_tencent_spider.first_process"
+    },
+    {
+      "process_id": 2,
+      "process_method": "spiders.new_tencent_spider.second_process",
+      "parameters": "RESULTS.2.page"
+    }
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "_page": "random.randint(1, 82)"
+    },
+    {
+      "result_id": 2,
+      "title": "//div[@class='bookinfo']/div[@class='bookname']/a/text()#list",
+      "url": "//div[@class='bookinfo']/div[@class='bookname']/a/@href#list",
+      "author": "//div[@class='bookinfo']/div[@class='bookilnk']/a[1]/text()#list",
+      "tags": "//div[@class='bookinfo']/div[@class='bookilnk']/a[2]/text()#list"
+    },
+    {
+      "result_id": 3,
+      "intro": "div.book-dec::text",
+      "status": "完本",
+      "count": "div.book-new-chapter > div.tit > a::text"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 10,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@novel",
+  "PRIORITY": 1
+}
+

@@ -1,0 +1,17 @@
+{
+  "name": "headless_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "chrome_server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "puppeteer-cn": "^0.1.8",
+    "request": "^2.88.0"
+  }
+}

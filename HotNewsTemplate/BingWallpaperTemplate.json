@@ -1,0 +1,63 @@
+{
+  "START_URL": "https://cn.bing.com/",
+  "SPIDER_NAME": "BingWallpaper",
+  "SITE_NAME": "bingwallpaper",
+  "METHOD": "GET",
+  "REFERER": "https://cn.bing.com/",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "result": "RESULTS.1",
+      "return_type": "html",
+      "timeout": "20000",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "https://cn.bing.com/?FORM=BEHPTB&ensearch=1",
+      "extra_headers": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1"
+      },
+      "result": "RESULTS.2",
+      "return_type": "css",
+      "timeout": "20000",
+      "return_item": "items.ImageItem"
+    }
+  ],
+  "PROCESSES": [
+    {
+      "process_id": 1,
+      "process_method": "spiders.new_tencent_spider.first_process"
+    },
+    {
+      "process_id": 2,
+      "process_method": "spiders.new_tencent_spider.second_process",
+      "parameters": "RESULTS.2.page"
+    }
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "x": "placeholder"
+    },
+    {
+      "result_id": 1,
+      "part_url": "link#bgLink::href",
+      "url": "$https://cn.bing.com{part_url}"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 20000,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@wallpaper",
+  "PRIORITY": 1
+}
+

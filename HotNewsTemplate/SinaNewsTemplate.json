@@ -1,0 +1,80 @@
+{
+  "START_URL": "http://ent.sina.com.cn/rollnews.shtml",
+  "SPIDER_NAME": "SinaNewsSpider",
+  "SITE_NAME": "sina",
+  "REFERER": "http://ent.sina.com.cn/",
+  "METHOD": "GET",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "method": "GET",
+      "process": "PROCESSES.1",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "http://feed.mix.sina.com.cn/api/roll/get?pageid={pageid}&lid={lid}&k=&num=50&page={page}&r={_random}",
+      "parameters": "RESULTS.1 & RESULTS.2.page",
+      "process": "PROCESSES.2",
+      "return_type": "json",
+      "result": "RESULTS.2",
+      "next_request": "REQUESTS.3",
+      "is_multiple": true,
+      "stopped": "news_time"
+    },
+    {
+      "request_id": 3,
+      "start_url": "RESULTS.2.url",
+      "category": "news",
+      "result": "RESULTS.3",
+      "is_duplicate": true,
+      "return_item": "items.NewsItem"
+    }
+  ],
+  "PROCESSES": [
+    {
+      "process_id": 1,
+      "process_method": "spiders.new_sina_spider.first_process"
+    },
+    {
+      "process_id": 2,
+      "process_method": "spiders.new_sina_spider.second_process",
+      "parameters": "RESULTS.2.page"
+    }
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "page": 0,
+      "pageid": "//div[@id=\"channelList\"]/a[1]/@pageid",
+      "lid": "//div[@id=\"channelList\"]/a[1]/@s_id",
+      "_random": "random.random()",
+      "global_parameter": "page"
+    },
+    {
+      "result_id": 2,
+      "page": "{page} + 1",
+      "title": "result>data>title",
+      "url": "result>data>url",
+      "news_time": "result>data>ctime",
+      "global_parameter": "page"
+    },
+    {
+      "result_id": 3,
+      "content": "//div[@id='artibody']/p/text()#text"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 10,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@sina",
+  "PRIORITY": 1
+}
+
