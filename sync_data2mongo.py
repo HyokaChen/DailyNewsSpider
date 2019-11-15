@@ -30,7 +30,7 @@ def sync_data2mongodb(logger=None):
             collection = json_dict.get('data_table', "").split(AT)[1]
             del json_dict['data_table']
             _id = json_dict['_id']
-            if _id = '1d33c55f57dd60237f2657028814b638':
+            if _id == '1d33c55f57dd60237f2657028814b638':
                 continue
             if insert_data(collection, json_dict):
                 logger.info(Colored.blue("[Data2MongoDB]: db:{1} >> content 的 id==>{0}".format(json_dict.get('_id'),
