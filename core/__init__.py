@@ -12,6 +12,7 @@
 import os
 import sys
 import re
+import logme
 from types import GeneratorType
 from lxml.etree import _Element
 import time
@@ -199,10 +200,12 @@ def transform_datetime(date_str, site):
     return result
 
 
-def to_dict_2(result):
+@logme.log(name="[to_dict_2]")
+def to_dict_2(result, logger=None):
     """
     item进行进一步的更新，添加一些记录字段
     :param result: 原始的item数据
+    :param logger: 日志记录
     :return: 返回最终的item
     """
     try:
@@ -249,7 +252,7 @@ def to_dict_2(result):
         )
         return d
     except Exception as e:
-        raise e
+        logger.error("[to_dict_2]发生错误，链接为：{0}".format(result['url']), exc_inexc_info=True)
 
 
 __all__ = [

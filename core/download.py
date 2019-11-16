@@ -70,6 +70,10 @@ class Downloader(object):
         else:
             timeout = int(task.parameters['timeout'])
         url = http_request['start_url']
+        if 'cookies' in task.parameters and task.parameters['cookies']:
+            cookies = task.parameters['cookies']
+        else:
+            cookies = None
         self.logger.info(Colored.green("[Downloader]: 目前下载URL =>{0}".format(url)))
         response = None
         if ENVIRONMENT == EnvironmentType.DEV and "htm" in url:
@@ -97,6 +101,7 @@ class Downloader(object):
                             headers=headers,
                             proxy=proxy,
                             timeout=timeout,
+                            cookies=cookies,
                         )
                     elif method == POST:
                         request = self.session.post(
@@ -105,6 +110,7 @@ class Downloader(object):
                             headers=headers,
                             proxy=proxy,
                             timeout=timeout,
+                            cookies=cookies,
                         )
                     async with request as response:
                         byte_content = await response.read()

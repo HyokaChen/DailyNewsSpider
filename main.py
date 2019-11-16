@@ -18,9 +18,9 @@ from core.queue import RedisTaskQueue
 
 @click.command()
 @click.option("--master", "-m", default=False)
-@click.option("--path", "-p", default="./", type=str)
+@click.option("--path", "-p", default="./HotNewsTemplate/", type=str)
 def run(master, path):
-    liz = Liz2Bird('./HotNewsTemplate/', Downloader(), RedisProcessContent(), RedisTaskQueue())
+    liz = Liz2Bird(path, Downloader(), RedisProcessContent(), RedisTaskQueue())
     liz.run(is_master=master)
 
 

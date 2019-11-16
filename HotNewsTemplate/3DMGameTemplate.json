@@ -1,0 +1,69 @@
+{
+  "START_URL": "https://www.3dmgame.com/",
+  "SPIDER_NAME": "3DMGameSpide",
+  "SITE_NAME": "3dmgame",
+  "METHOD": "GET",
+  "REFERER": "https://www.3dmgame.com/",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "extra_headers": {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.34 Safari/537.36 Edg/78.0.276.11"
+      },
+      "return_type": "html",
+      "timeout": "20000",
+      "process": "PROCESSES.1",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "RESULTS.1.url",
+      "extra_headers": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1"
+      },
+      "result": "RESULTS.2",
+      "return_type": "css",
+      "timeout": "20000",
+      "is_duplicate": true,
+      "return_item": "items.GameItem"
+    }
+  ],
+  "PROCESSES": [
+    {
+      "process_id": 1,
+      "process_method": "spiders.new_tencent_spider.first_process"
+    },
+    {
+      "process_id": 2,
+      "process_method": "spiders.new_tencent_spider.second_process",
+      "parameters": "RESULTS.2.page"
+    }
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "url": "//div[@class='Listwrap']//ul/li/a/@href#list",
+      "title": "//div[@class='Listwrap']//ul/li/a/text()#list"
+    },
+    {
+      "result_id": 2,
+      "content": "div.news_warp_center::text",
+      "news_time": "div.time > span::text"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 20000,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@paper",
+  "PRIORITY": 1
+}
+

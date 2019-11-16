@@ -198,4 +198,19 @@ if __name__ == '__main__':
         "last_modified": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "timestamp": time.time()
     }
-    insert_data('items', image_item)
+    # game
+    # image
+    game_item = {
+        "_id": "game_item",
+        "name": "GameItem",
+        "fields": {
+            "url": "str",
+            "title": "str",
+            "content": "str",
+            "news_time": "str",
+            "site": "str"
+        },
+        "last_modified": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "timestamp": time.time()
+    }
+    insert_data('items', game_item)
