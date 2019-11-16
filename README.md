@@ -1,8 +1,8 @@
-#DailyNewsSpider
+# DailyNewsSpider
 
 [每日随机资讯](https://blog.emptychan.xyz)的新闻资讯来源
 
-####目前采集进程如下：
+#### 目前采集进程如下：
 
 - [x] [Acg 门户](https://www.acgmh.com/category/news)
 - [x] [Bing 壁纸](https://cn.bing.com/)
@@ -16,5 +16,6 @@
 - [x] [腾讯动漫资讯](https://new.qq.com/ch/comic/)
 - [x] [腾讯娱乐新闻](http://ent.qq.com/articleList/rolls/)
 - [x] [推酷](https://www.tuicool.com/)
+- [x] [3DMGame](https://www.3dmgame.com/)
 - [ ] [Bangumi 动漫](http://bgm.tv/anime/browser/tv)
 

@@ -63,7 +63,7 @@
   "COOKIES": "",
   "RANGE_TIME": "",
   "RETURN_TYPE": "html",
-  "DATA_TABLE": "mongo@paper",
+  "DATA_TABLE": "mongo@game",
   "PRIORITY": 1
 }
 
