@@ -168,8 +168,6 @@ class Liz2Bird(object):
             try:
                 sleep_time = random.uniform(0, 2)
                 counter_task = []
-                is_download_complete = False
-                download_content_list = []
                 while True:
                     # 弹出 task 并下载
                     total_count, tasks = self._task_pop()
@@ -188,17 +186,9 @@ class Liz2Bird(object):
                         counter_task.append(task)
                         self.logger.info(Colored.green("[Liz2Bird-start()]: 弹出下载ask，task_id>>{0}"
                                                        .format(task.task_id)))
-                        # 如果任务多于 3 个就执行并发请求
-                        if total_count > 3 and len(counter_task) == 4:
-                            download_content_list = await asyncio.gather(*[self._download(t) for t in counter_task],
-                                                                         return_exceptions=True)
-                            self.logger.info(Colored.green("[Liz2Bird-start()]: 并发请求 4 个"))
-                            is_download_complete = True
-                        else:
-                            download_content_list = await asyncio.gather(*[self._download(t) for t in counter_task],
-                                                                         return_exceptions=True)
-                            self.logger.info(Colored.green("[Liz2Bird-start()]: 少于 4 个串行请求"))
-                            is_download_complete = True
+                        download_content_list = await asyncio.gather(*[self._download(t) for t in counter_task],
+                                                                     return_exceptions=True)
+                        self.logger.info(Colored.green("[Liz2Bird-start()]: 少于 4 个串行请求"))
                         # 处理结果
                         for i, download_content in enumerate(download_content_list):
                             if download_content is None:
@@ -252,9 +242,6 @@ class Liz2Bird(object):
                                         task.result_id)))
                                     result = self._build_result(task, result_dict=new_result)
                                     self.pipeline.content_process(result)
-                        # 清除当次运行的任务
-                        if is_download_complete:
-                            counter_task.clear()
                     except Exception as e:
                         # 添加任务重试机制
                         task.retry_times += 1
