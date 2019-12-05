@@ -242,6 +242,7 @@ class Liz2Bird(object):
                                         task.result_id)))
                                     result = self._build_result(task, result_dict=new_result)
                                     self.pipeline.content_process(result)
+                        counter_task.clear()
                     except Exception as e:
                         # 添加任务重试机制
                         task.retry_times += 1
