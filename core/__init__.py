@@ -253,6 +253,7 @@ def to_dict_2(result, logger=None):
         return d
     except Exception as e:
         logger.error("[to_dict_2]发生错误，链接为：{0}".format(result['url']), exc_info=True)
+    return None
 
 
 __all__ = [

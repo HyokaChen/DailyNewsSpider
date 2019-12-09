@@ -27,5 +27,6 @@ class MysqlProcessContent(ProcessContent):
 
 class RedisProcessContent(ProcessContent):
     def content_process(self, content):
-        item = json.dumps(content, ensure_ascii=False)
-        rdb.sadd(STORE_TOPIC, item)
+        if content is not None:
+            item = json.dumps(content, ensure_ascii=False)
+            rdb.sadd(STORE_TOPIC, item)
