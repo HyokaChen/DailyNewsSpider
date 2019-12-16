@@ -125,10 +125,13 @@ def format_data(data, node_path, reg_idx=ONE):
                 result = result[0].strip()
         elif isinstance(data, str):
             results = re.findall(node_path, data)
-            if LIST == reg_idx:
+            if len(results) > 0:
+                if LIST == reg_idx:
+                    result = results
+                elif ONE == reg_idx:
+                    result = results[0]
+            else:
                 result = results
-            elif ONE == reg_idx:
-                result = results[0]
         else:
             raise Exception("format type is not right or data is not <_Element> or type <dict>!!!")
     return result
