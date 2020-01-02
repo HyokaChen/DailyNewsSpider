@@ -17,5 +17,6 @@
 - [x] [腾讯娱乐新闻](http://ent.qq.com/articleList/rolls/)
 - [x] [推酷](https://www.tuicool.com/)
 - [x] [3DMGame](https://www.3dmgame.com/)
+- [x] [游民星空动漫资讯](https://acg.gamersky.com/news/)
 - [ ] [Bangumi 动漫](http://bgm.tv/anime/browser/tv)
 

@@ -1,0 +1,57 @@
+{
+  "START_URL": "https://acg.gamersky.com/news/",
+  "SPIDER_NAME": "GamerSkyAcgSpider",
+  "SITE_NAME": "gamersky",
+  "REFERER": "https://acg.gamersky.com/news/",
+  "METHOD": "GET",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "start_url": "https://acg.gamersky.com/news/",
+      "process": "PROCESSES.1",
+      "return_type": "html",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "RESULTS.1.url",
+      "result": "RESULTS.2",
+      "return_type": "css",
+      "is_duplicate": true,
+      "return_item": "items.HotNewsItem"
+    }
+  ],
+  "PROCESSES": [
+    {
+      "process_id": 1,
+      "process_method": "spiders.new_tencent_spider.first_process"
+    }
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "title": "//li[@class='ptxt']/div[@class='tit']/a/text()#list",
+      "url": "//li[@class='ptxt']/div[@class='tit']/a/@href#list",
+      "news_time": "//li[@class='ptxt']/div[@class='con']/div[@class='tem']/div[@class='time']/text()#list",
+      "description": "//li[@class='ptxt']/div[@class='con']/div[@class='txt']/text()#list"
+    },
+    {
+      "result_id": 2,
+      "author": "div.detail > span:nth-child(3)::text",
+      "content": " "
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 10,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@animation",
+  "PRIORITY": 1
+}
+
