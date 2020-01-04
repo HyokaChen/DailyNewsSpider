@@ -1,8 +1,8 @@
 {
-  "START_URL": "https://new.qq.com/ch/comic/",
+  "START_URL": "https://xw.qq.com/m/ac",
   "SPIDER_NAME": "TencentComicNewsSpider",
   "SITE_NAME": "tencent",
-  "REFERER": "https://new.qq.com/ch/comic/",
+  "REFERER": "https://xw.qq.com/m/ac",
   "METHOD": "GET",
   "REQUESTS": [
     {
@@ -14,7 +14,7 @@
     },
     {
       "request_id": 2,
-      "start_url": "https://pacaio.match.qq.com/irs/rcd?cid=146&token=49cbb2154853ef1a74ff4e53723372ce&ext=comic&page={page}",
+      "start_url": "https://pacaio.match.qq.com/irs/rcd?cid=157&ext=3&token=593f1fd3863d9e415ece769999ff924e&page={page}&num=20",
       "parameters": "RESULTS.1 & RESULTS.2.page",
       "process": "PROCESSES.2",
       "return_type": "json",
