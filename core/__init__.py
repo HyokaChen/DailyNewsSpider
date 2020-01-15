@@ -98,8 +98,6 @@ def format_data(data, node_path, reg_idx=ONE):
                     result = result.get_text('\n\n', strip=True).strip()
                 else:
                     result = result.attrs[attr].strip()
-            else:
-                result = ""
         elif GREATER_THAN in node_path and isinstance(data, dict):
             node, *list_or_one_list = node_path.split(HASH)
             json_nodes = [n for n in node.split(">") if n != '']
@@ -217,6 +215,8 @@ def to_dict_2(result, logger=None):
         for k1, k2 in result.items():
             # 以url的md5作为唯一性标识
             if k1 == 'url':
+                if "None" in k2.strip():
+                    continue
                 m.update(k2.strip().encode('utf-8'))
                 d.setdefault('_id', m.hexdigest())
                 d.setdefault('url', k2.strip())
