@@ -216,7 +216,7 @@ def to_dict_2(result, logger=None):
             # 以url的md5作为唯一性标识
             if k1 == 'url':
                 if "None" in k2.strip():
-                    continue
+                    return None
                 m.update(k2.strip().encode('utf-8'))
                 d.setdefault('_id', m.hexdigest())
                 d.setdefault('url', k2.strip())
