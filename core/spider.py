@@ -16,7 +16,7 @@ import time
 import logme
 import datetime
 from utils.color import Colored
-from config.constant import (LEFT_BRACE, RIGHT_BRACE, REQUESTS_TOPIC, PROCESSES_TOPIC, DOT, DOLLAR,
+from config.constant import (LEFT_BRACE, RIGHT_BRACE, REQUESTS_TOPIC, PROCESSES_TOPIC, DOT, DOLLAR, DAILY_FORMAT,
                              RESULTS_TOPIC, TASK_TOPIC, SpiderStatus, AND, WayType, HASH_MAP, AT, HASH,
                              EXCLUDE_FIELD, DIAGONAL, GREATER_THAN, UNDER_LINE, TEMPLATES_TOPIC, COLON)
 from core.middleware import TemplateMiddleware, DownloadMiddleware, QueueMiddleware
@@ -471,7 +471,7 @@ class Liz2Bird(object):
         if HASH in task.parameters['range_time']:
             s_date_str, e_date_str = task.parameters['range_time'].split('#')
         else:
-            s_date_str = datetime.datetime.now() - datetime.timedelta(days=1)
+            s_date_str = (datetime.datetime.now() - datetime.timedelta(days=1)).strftime(DAILY_FORMAT)
             e_date_str = ''
         # 规则匹配内容并返回
         result_dict, result_generator_dict = self._result_template_handler(result_obj, processed_content,
@@ -496,7 +496,6 @@ class Liz2Bird(object):
                 stopped_value = result_generator_dict.get(stopped)
                 # 排序 stopped 字段index
                 stopped_args = sort_time(stopped_value)
-                del result_generator_dict[stopped]
                 for arg in stopped_args:
                     if not is_in_range_time(stopped_value[arg], s_date_str, e_date_str):
                         is_stopped = True
