@@ -246,7 +246,7 @@ class Liz2Bird(object):
                     except Exception as e:
                         # 添加任务重试机制
                         task.retry_times += 1
-                        if task.retry_times < 5:
+                        if task.retry_times < 3:
                             self._queue_push([task.obj2dict()])
                             self.logger.error(Colored.red("[Liz2Bird-start()]: Task>>>{0}出现错误>>>{1}, 重试次数[{2}/3]...."
                                                           .format(task.task_id, e, task.retry_times)), exc_info=True)
@@ -474,6 +474,7 @@ class Liz2Bird(object):
             s_date_str = (datetime.datetime.now() - datetime.timedelta(days=1)).strftime(DAILY_FORMAT)
             e_date_str = ''
         # 规则匹配内容并返回
+        self.logger.info(Colored.green("[Liz2Bird-_process()]: 正在处理的 URL >> {0}".format(task.request['url'])))
         result_dict, result_generator_dict = self._result_template_handler(result_obj, processed_content,
                                                                            task.parameters)
         all_task_result = []
@@ -533,7 +534,8 @@ class Liz2Bird(object):
                 self.logger.info(
                     Colored.green("[Liz2Bird-_process()]: repeat task再次放入>>{0}".format(repeat_task['task_id'])))
         except Exception as e:
-            self.logger.error(Colored.red("[Liz2Bird-_process()]: 处理出现错误>>>{0}....(@ $ _ $ @)----".format(e)),
+            self.logger.error(Colored.red("[Liz2Bird-_process()]: 处理出现错误>>>{0}=>{1}....(@ $ _ $ @)----"
+                                          .format(e, task.request['url'])),
                               exc_info=True)
         finally:
             return all_task_result
@@ -719,7 +721,6 @@ class Liz2Bird(object):
         except Exception as e:
             self.logger.error(Colored.red("[Liz2Bird-_result_template_handler()]: 出现处理错误>>>{0}....(@ $ _ $ @)----"
                                           .format(e)), exc_info=True)
-            raise e
         return temp_results, temp_generator_results
 
     def _parameter_expression_handler(self, expression, parameters):

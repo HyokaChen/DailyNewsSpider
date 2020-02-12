@@ -131,7 +131,7 @@ def format_data(data, node_path, reg_idx=ONE):
             else:
                 result = results
         else:
-            raise Exception("format type is not right or data is not <_Element> or type <dict>!!!")
+            raise Exception(f"{node_path}:::format type is not right or data is not <_Element> or type <dict>!!!")
     return result
 
 
