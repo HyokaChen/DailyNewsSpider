@@ -75,7 +75,7 @@
     {
       "result_id": 2,
       "page": "{page} + 1",
-      "max_page": "5",
+      "max_page": "1",
       "data": "msg>#one",
       "url": "https:\\/\\/www.acgmh.com\\/\\d+.html@data#list",
       "global_parameter": "page"

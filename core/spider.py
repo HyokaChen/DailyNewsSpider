@@ -245,11 +245,8 @@ class Liz2Bird(object):
                         counter_task.clear()
                     except Exception as e:
                         # 添加任务重试机制
-                        task.retry_times += 1
-                        if task.retry_times < 3:
-                            self._queue_push([task.obj2dict()])
-                            self.logger.error(Colored.red("[Liz2Bird-start()]: Task>>>{0}出现错误>>>{1}, 重试次数[{2}/3]...."
-                                                          .format(task.task_id, e, task.retry_times)), exc_info=True)
+                        self.logger.error(Colored.red("[Liz2Bird-start()]: Task>>>{0}出现错误>>>{1}, 重试次数[{2}/3]...."
+                                                      .format(task.task_id, e, task.retry_times)), exc_info=True)
             except Exception as e:
                 self.logger.error(Colored.red("[Liz2Bird-start()]: 出现错误>>>{0}....(@ $ _ $ @)----".format(e)),
                                   exc_info=True)
@@ -474,7 +471,7 @@ class Liz2Bird(object):
             s_date_str = (datetime.datetime.now() - datetime.timedelta(days=1)).strftime(DAILY_FORMAT)
             e_date_str = ''
         # 规则匹配内容并返回
-        self.logger.info(Colored.green("[Liz2Bird-_process()]: 正在处理的 URL >> {0}".format(task.request['url'])))
+        self.logger.info(Colored.green("[Liz2Bird-_process()]: 正在处理的 URL >> {0}".format(task.request['start_url'])))
         result_dict, result_generator_dict = self._result_template_handler(result_obj, processed_content,
                                                                            task.parameters)
         all_task_result = []
