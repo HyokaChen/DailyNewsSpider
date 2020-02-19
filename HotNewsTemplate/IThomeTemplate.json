@@ -45,11 +45,11 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "url": "//ul[@class='ulcl']/li/a/@href#list",
-      "title": "//ul[@class='ulcl']/li/a/text()#list"
+      "url": "//ul[@class='ulcl']/li/a/@href#list"
     },
     {
       "result_id": 2,
+      "title": "div.post_title > h1::text",
       "author": "span#author_baidu > strong::text",
       "description": "",
       "content": "div#paragraph::text",
