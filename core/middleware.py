@@ -35,17 +35,13 @@ class Middleware(object):
 class TemplateMiddleware(Middleware):
     def middle_origin2engine(self, *obj):
         template = obj[0]
-        request_templates = []
-        process_templates = []
-        result_templates = []
         # 请求template集合
-        for request_template in template.get(REQUESTS):
-            request = HTTPRequestTemplate(**request_template)
-            request_templates.append(request)
+        request_templates = [HTTPRequestTemplate(**request_template)
+                             for request_template in template.get(REQUESTS)]
         # 处理template集合
-        for process_template in template.get(PROCESSES):
-            process = HTTPProcessTemplate(**process_template)
-            process_templates.append(process)
+        process_templates = [HTTPProcessTemplate(**process_template)
+                             for process_template in template.get(PROCESSES)]
+        result_templates = []
         # 结果template集合
         for result_template in template.get(RESULTS):
             result_id = result_template.get('result_id')

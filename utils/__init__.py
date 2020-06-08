@@ -45,13 +45,16 @@ def is_file_exists(path):
     return os.path.exists(path)
 
 
-def decode_content(content):
+def decode_content(content, encoding=None):
     """
     解码内容为文本
     :param content: 二进制内容
+    :param encoding: 编码
     :return: 文本
     """
     try:
+        if encoding is not None:
+            return content.decode(encoding)
         return content.decode('utf-8')
     except Exception:
         try:

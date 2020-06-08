@@ -250,8 +250,6 @@ class Liz2Bird(object):
             except Exception as e:
                 self.logger.error(Colored.red("[Liz2Bird-start()]: 出现错误>>>{0}....(@ $ _ $ @)----".format(e)),
                                   exc_info=True)
-        # 等待关闭
-        await self.download.close()
 
     def stop(self):
         """

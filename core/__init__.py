@@ -89,24 +89,7 @@ def format_data(data, node_path, reg_idx=ONE):
     result = None
     print('**********{0}'.format(node_path))
     if isinstance(node_path, str) and node_path != "":
-        if COLON in node_path:
-            node, attr = node_path.split(COLON)
-            results = data.select(node)
-            if len(results) > 0:
-                result = results[0]
-                if attr == TEXT:
-                    result = result.get_text('\n\n', strip=True).strip()
-                else:
-                    result = result.attrs[attr].strip()
-        elif GREATER_THAN in node_path and isinstance(data, dict):
-            node, *list_or_one_list = node_path.split(HASH)
-            json_nodes = [n for n in node.split(">") if n != '']
-            result = _transform_json_content(data, json_nodes)
-            if len(list_or_one_list) > 0:
-                list_or_one = list_or_one_list[0]
-                if ONE == list_or_one:
-                    result = result[0]
-        elif DIAGONAL in node_path and isinstance(data, _Element):
+        if DIAGONAL in node_path and isinstance(data, _Element):
             node, *list_or_one_or_text_list = node_path.split(HASH)
             result = data.xpath(node)
             if len(result) == 0:
@@ -121,6 +104,23 @@ def format_data(data, node_path, reg_idx=ONE):
                     result = result[0].strip()
             else:
                 result = result[0].strip()
+        elif GREATER_THAN in node_path and isinstance(data, dict):
+            node, *list_or_one_list = node_path.split(HASH)
+            json_nodes = [n for n in node.split(">") if n != '']
+            result = _transform_json_content(data, json_nodes)
+            if len(list_or_one_list) > 0:
+                list_or_one = list_or_one_list[0]
+                if ONE == list_or_one:
+                    result = result[0]
+        elif COLON in node_path:
+            node, attr = node_path.split(COLON)
+            results = data.select(node)
+            if len(results) > 0:
+                result = results[0]
+                if attr == TEXT:
+                    result = result.get_text('\n\n', strip=True).strip()
+                else:
+                    result = result.attrs[attr].strip()
         elif isinstance(data, str):
             results = re.findall(node_path, data)
             if len(results) > 0:

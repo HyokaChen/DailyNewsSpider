@@ -5,6 +5,11 @@ description = ""
 authors = ["EmptyChan <chen19941018@live.com>"]
 license = "MIT"
 
+[[tool.poetry.source]]
+name = "tsinghua"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
+
 [tool.poetry.dependencies]
 python = "^3.7"
 grequests = "*"
@@ -15,7 +20,6 @@ redis = "*"
 mmh3 = "*"
 colorama = "*"
 wrapt = "1.11.1"
-aiohttp = "*"
 apscheduler = "*"
 pymysql = "*"
 aiomysql = "*"
@@ -27,6 +31,8 @@ envparse = "*"
 html5lib = "*"
 bs4 = "*"
 cchardet = "*"
+httpx = "^0.13.3"
+uvloop = "^0.14.0"
 
 [tool.poetry.dev-dependencies]
 
