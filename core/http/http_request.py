@@ -40,7 +40,7 @@ class HTTPRequestTemplate(object):
 
     def __init__(self, request_id, start_url=None, method=GET, post_data=None,
                  referer=None, process=None, parameters=None,
-                 category="", timeout=1, sleep_time=0.1, render=False,
+                 category="", timeout=None, sleep_time=0.5, render=False,
                  use_proxy=None, cookies=None, return_type=HTML,
                  return_item=None, is_duplicate=False, is_multiple=False,
                  result=None, next_request=None, parallel_request=None, stopped=None, extra_headers=None):

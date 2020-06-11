@@ -143,7 +143,7 @@ class Downloader(object):
                     self.logger.error(Colored.red("[Downloader()]: 目前下载URL =>{0} 重试次数[{1}/{2}] ERROR: {3}".
                                                   format(url, retry_times, max_retry, e)), exc_info=True)
                     sleep_time *= random.random() * self.sleep_factor
-                    await asyncio.sleep(sleep_time)
+                    time.sleep(sleep_time)
         else:
             pass
 

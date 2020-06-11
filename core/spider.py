@@ -359,7 +359,7 @@ class Liz2Bird(object):
             task['referer'] = referer_url.popitem()[1]
             self.logger.info(Colored.green("[Liz2Bird-_build_task()]: 采用result 模板{0}，链接为>>{1}"
                                            .format(request.referer, task['referer'])))
-        if 'None' in task['start_url']:
+        if task['start_url'] is None or 'None' in task['start_url']:
             self.logger.error(Colored.red("[Liz2Bird-_build_task()]: URL 中出现 None>>>start_url=>{0}".
                                           format(task['start_url'])))
             return None
