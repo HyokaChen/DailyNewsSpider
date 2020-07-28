@@ -1,18 +1,14 @@
 {
-  "START_URL": "https://www.ithome.com/list/",
-  "SPIDER_NAME": "IThome",
-  "SITE_NAME": "ithome",
+  "START_URL": "https://segmentfault.com/",
+  "SPIDER_NAME": "SegmentfaultNewsSpider",
+  "SITE_NAME": "segmentfault",
+  "REFERER": "https://segmentfault.com/",
   "METHOD": "GET",
-  "REFERER": "https://www.ithome.com/",
   "REQUESTS": [
     {
       "request_id": 1,
-      "extra_headers": {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.34 Safari/537.36 Edg/78.0.276.11"
-      },
+      "method": "GET",
       "process": "PROCESSES.1",
-      "timeout": "20000",
-      "return_type": "html",
       "result": "RESULTS.1",
       "next_request": "REQUESTS.2"
     },
@@ -20,13 +16,13 @@
       "request_id": 2,
       "start_url": "RESULTS.1.url",
       "extra_headers": {
-        "sec-fetch-mode": "navigate",
-        "sec-fetch-site": "none",
-        "sec-fetch-user": "?1"
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "same-origin",
+        "Sec-Fetch-User": "?1",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3858.0 Safari/537.36 Edg/77.0.229.0"
       },
       "result": "RESULTS.2",
       "return_type": "css",
-      "timeout": "20000",
       "is_duplicate": true,
       "return_item": "items.HotNewsItem"
     }
@@ -45,19 +41,20 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "url": "//ul[@class='ulcl']/li/a/@href#list"
+      "title": "//div[@class='news-list']/div/div/a[@target='_blank']//h4/text()#list",
+      "part_url": "//div[@class='news-list']/div/div/a[@target='_blank']/@href#list",
+      "url": "$https://segmentfault.com/{part_url}",
+      "author": "//div[@class='news-list']/div//span[contains(@class, 'author')]/a/text()#list",
+      "description": ""
     },
     {
       "result_id": 2,
-      "title": "div.content > h1::text",
-      "author": "span#author_baidu > strong::text",
-      "description": "",
-      "content": "div#paragraph::text",
-      "news_time": "span#pubtime_baidu::text"
+      "news_time": "div#sf-article_tags > div > time[itemprop='datePublished']::datetime",
+      "content": "article.article::text"
     }
   ],
   "RENDER": false,
-  "TIMEOUT": 200,
+  "TIMEOUT": 10,
   "USE_PROXY": false,
   "SLEEP_TIME": 10,
   "SESSION": true,
