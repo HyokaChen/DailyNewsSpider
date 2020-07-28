@@ -58,9 +58,12 @@ def decode_content(content, encoding=None):
         return content.decode('utf-8')
     except Exception:
         try:
-            return content.decode('gbk')
-        except Exception as e:
-            raise e
+            return content.decode('utf-8')
+        except Exception:
+            try:
+                return content.decode('gbk')
+            except Exception as e:
+                raise e
 
 
 def dumps_content(content):

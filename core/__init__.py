@@ -104,7 +104,7 @@ def format_data(data, node_path, reg_idx=ONE):
                     result = result[0].strip()
             else:
                 result = result[0].strip()
-        elif GREATER_THAN in node_path and isinstance(data, dict):
+        elif GREATER_THAN in node_path and (isinstance(data, dict) or isinstance(data, list)):
             node, *list_or_one_list = node_path.split(HASH)
             json_nodes = [n for n in node.split(">") if n != '']
             result = _transform_json_content(data, json_nodes)
@@ -148,7 +148,10 @@ def _transform_json_content(data, nodes: list):
         # 如果路径没了，返回本身合并成的list
         try:
             if len(inner_nodes) == 1:
-                results.append(inner_data.get(inner_nodes[0]))
+                if isinstance(inner_data, list):
+                    results.extend([inn.get(inner_nodes[0]) for inn in inner_data])
+                else:
+                    results.append(inner_data.get(inner_nodes[0]))
             else:
                 node = inner_nodes[0]
                 del inner_nodes[0]
@@ -176,7 +179,7 @@ def transform_datetime(date_str, site):
     """
     result = None
     if site in SITE_MAP:
-        if SITE_MAP[site] == SiteType.SINA:
+        if SITE_MAP[site] in (SiteType.SINA, SiteType.HACKERNEWS):
             try:
                 time_int = int(date_str)
                 result = datetime.fromtimestamp(time_int).strftime(DATE_FMT)

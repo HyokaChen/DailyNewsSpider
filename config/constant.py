@@ -31,6 +31,7 @@ class SiteType(Enum):
     ACGMH = 5
     CTOLIB = 6
     PAPERSWITHCODE = 7
+    HACKERNEWS = 8
 
 
 @unique
@@ -56,6 +57,19 @@ class WayType(Enum):
     SRANDMEMBER = 10
     HKEYS = 11
     HDEL = 12
+
+
+@unique
+class StatusType(Enum):
+    NONE = 0
+    SUCCESS = 1
+    FAIL = 2
+
+
+@unique
+class NextType(Enum):
+    SCHEDULER = 0
+    PROCESSOR = 1
 
 
 CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -132,7 +146,8 @@ SITE_MAP = {
     'dmzj': SiteType.DMZJ,
     'acgmh': SiteType.ACGMH,
     'ctolib': SiteType.CTOLIB,
-    'paperswithcode': SiteType.PAPERSWITHCODE
+    'paperswithcode': SiteType.PAPERSWITHCODE,
+    "hackernews": SiteType.HACKERNEWS
 }
 
 # 消息队列
@@ -146,6 +161,10 @@ REQUESTS = 'REQUESTS'
 PROCESSES = 'PROCESSES'
 RESULTS = 'RESULTS'
 HASH_MAP = 'hash_map_{0}'
+DOWNLOAD_STREAM = 'download_stream'
+PROCESS_STREAM = 'process_stream'
+RESULT_STREAM = 'result_stream'
+MAX_LEN = 2000
 
 # 类别
 NEWS = 'news'
