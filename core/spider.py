@@ -184,8 +184,8 @@ class Liz2Bird(object):
                     time.sleep(sleep_time)
                     try:
                         counter_task.append(task)
-                        self.logger.info(Colored.green("[Liz2Bird-start()]: 弹出下载ask，task_id>>{0}"
-                                                       .format(task.task_id)))
+                        self.logger.info(Colored.green("[Liz2Bird-start()]: 弹出下载Task，task_id>>{0}>>>{1}"
+                                                       .format(task.task_id, task.parameters['site_name'])))
                         download_content_list = await asyncio.gather(*[self._download(t) for t in counter_task],
                                                                      return_exceptions=True)
                         self.logger.info(Colored.green("[Liz2Bird-start()]: 少于 4 个串行请求"))

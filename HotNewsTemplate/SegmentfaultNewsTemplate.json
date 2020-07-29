@@ -43,7 +43,7 @@
       "result_id": 1,
       "title": "//div[@class='news-list']/div/div/a[@target='_blank']//h4/text()#list",
       "part_url": "//div[@class='news-list']/div/div/a[@target='_blank']/@href#list",
-      "url": "$https://segmentfault.com/{part_url}",
+      "url": "$https://segmentfault.com{part_url}",
       "author": "//div[@class='news-list']/div//span[contains(@class, 'author')]/a/text()#list",
       "description": ""
     },
