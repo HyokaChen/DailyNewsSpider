@@ -20,7 +20,7 @@
       "extra_headers": {
         "Host": "www.tuicool.com",
         "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-Site": "same-origin",
+        "Sec-Fetch-Dest": "document",
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3858.0 Safari/537.36 Edg/77.0.229.0"
       },
       "return_type": "html",
@@ -37,7 +37,7 @@
       "extra_headers": {
         "Host": "www.tuicool.com",
         "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-Site": "same-origin",
+        "Sec-Fetch-Dest": "document",
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3858.0 Safari/537.36 Edg/77.0.229.0"
       },
       "return_type": "html",
@@ -53,8 +53,7 @@
       "extra_headers": {
         "Host": "www.tuicool.com",
         "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-Site": "same-origin",
-        "Sec-Fetch-User": "?1",
+        "Sec-Fetch-Dest": "document",
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3858.0 Safari/537.36 Edg/77.0.229.0"
       },
       "result": "RESULTS.3",
@@ -84,10 +83,10 @@
       "result_id": 2,
       "page": "{page} + 1",
       "max_page": "1",
-      "title": "//div[@class='article_title abs-title']/a/text()#list",
-      "part_url": "//div[@class='article_title abs-title']/a/@href#list",
+      "title": "//div[@class='aricle_item_info']/div[@class='title']//a/text()#list",
+      "part_url": "//div[@class='aricle_item_info']/div[@class='title']//a/@href#list",
       "url": "$https://www.tuicool.com{part_url}",
-      "author": "//div[@class='tip meta-tip']/span[1]/text()#list",
+      "author": "//div[@class='tip']/span[1]/text()#list",
       "description": "",
       "global_parameter": "page"
     },
