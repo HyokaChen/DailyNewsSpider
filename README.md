@@ -20,4 +20,8 @@
 - [x] [3DMGame](https://www.3dmgame.com/)
 - [x] [游民星空动漫资讯](https://acg.gamersky.com/news/)
 - [ ] [Bangumi 动漫](http://bgm.tv/anime/browser/tv)
+- [x] [集智斑图](https://pattern.swarma.org/?type=newpaper)
+- [x] [SegmentFault](https://segmentfault.com/)
+- [x] [虎嗅](https://www.huxiu.com/)
+- [x] [HackerNews](https://hackernews.io/)
 
