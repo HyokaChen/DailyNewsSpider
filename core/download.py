@@ -35,12 +35,17 @@ ua = UserAgent()
 # TODO: to use https://www.python-httpx.org/ to download web page
 class Downloader(object):
     __slots__ = [
-        'sleep_factor'
+        'sleep_factor',
+        'session_container'
     ]
 
     def __init__(self):
         super().__init__()
         self.sleep_factor = 2
+        self.session_container = dict()
+
+    def close(self):
+        self.session_container.clear()
 
     async def single_download(self, task: Task):
         headers = {
@@ -71,81 +76,66 @@ class Downloader(object):
         else:
             cookies = None
         self.logger.info(Colored.green("[Downloader()]: 目前下载URL =>{0}".format(url)))
-        response = None
-        # if ENVIRONMENT == EnvironmentType.DEV and "htm" in url:
-        #     self.logger.info(Colored.green("-----从缓存中读取------"))
-        #     response = load_content({
-        #         "url": url,
-        #         "method": method,
-        #         "data": posts_data
-        #     })
         retry_times = 0
         max_time = int(http_request['sleep_time'])
         sleep_time = random.uniform(1, max_time)
-        if response is None:
-            max_retry = random.randint(4, 15)
-            while retry_times < max_retry:
-                proxy = get_random_proxy() if use_proxy else None
-                if proxy is not None:
-                    self.logger.info(Colored.green("[Downloader()]: 目前使用代理 =>{0}".format(proxy)))
-                try:
-                    request = Any
-                    async with httpx.AsyncClient(proxies=proxy) as session:
-                        if method == GET:
-                            request: Coroutine = session.get(
-                                url,
-                                headers=headers,
-                                timeout=timeout,
-                                cookies=cookies,
-                            )
-                        elif method == POST:
-                            request: Coroutine = session.post(
-                                url,
-                                data=posts_data,
-                                headers=headers,
-                                timeout=timeout,
-                                cookies=cookies,
-                            )
-                        response: Response = await request
-                        if response.status_code != httpx.codes.OK:
-                            response.raise_for_status()
-                        # try:
-                        #     if ENVIRONMENT == EnvironmentType.DEV:
-                        #         self.logger.info(Colored.green("----缓存请求----"))
-                        #         store_content({
-                        #             "url": url,
-                        #             "method": method,
-                        #             "data": posts_data
-                        #         }, byte_content)
-                        # except Exception as e:
-                        #     print(e)
-                        if response is None:
-                            return None
-                        byte_content: bytes = await response.aread()
-                    # 返回请求内容
-                    process_type = http_request['return_type']
-                    self.logger.info(Colored.green("[Downloader()]: 请求返回类型>>{0}".format(
-                        process_type)))
-                    encoding = chardet.detect(byte_content)['encoding']
-                    time.sleep(sleep_time)
-                    if process_type:
-                        if process_type == TEXT:
-                            return decode_content(byte_content, encoding)
-                        elif process_type == JSON:
-                            text = decode_content(byte_content, encoding)
-                            return json.loads(text, encoding='utf-8')
-                        elif process_type == CSS:
-                            return bs(byte_content, 'html5lib')
-                    text = decode_content(byte_content, encoding)
-                    return etree.HTML(text)
-                except Exception as e:
-                    retry_times += 1
-                    self.logger.error(Colored.red("[Downloader()]: 目前下载URL =>{0} 重试次数[{1}/{2}] ERROR: {3}".
-                                                  format(url, retry_times, max_retry, e)), exc_info=True)
-                    sleep_time *= random.random() * self.sleep_factor
-                    time.sleep(sleep_time)
-        else:
-            pass
+        max_retry = random.randint(4, 15)
+        while retry_times < max_retry:
+            proxy = get_random_proxy() if use_proxy else None
+            if proxy is not None:
+                self.logger.info(Colored.green("[Downloader()]: 目前使用代理 =>{0}".format(proxy)))
+            try:
+                request = Any
+                session = httpx.AsyncClient(proxies=proxy)
+                if http_request['use_session'] or task.parameters['use_session']:
+                    self.session_container.setdefault(task.parameters['spider_name'], session)
+                    session = self.session_container.get(task.parameters['spider_name'])
+                async with session:
+                    if method == GET:
+                        request: Coroutine = session.get(
+                            url,
+                            headers=headers,
+                            timeout=timeout,
+                            cookies=cookies,
+                        )
+                    elif method == POST:
+                        request: Coroutine = session.post(
+                            url,
+                            data=posts_data,
+                            headers=headers,
+                            timeout=timeout,
+                            cookies=cookies,
+                        )
+                    response: Response = await request
+                    if response.status_code != httpx.codes.OK:
+                        response.raise_for_status()
+                    if response is None:
+                        return None
+                    byte_content: bytes = await response.aread()
+                # 返回请求内容
+                process_type = http_request['return_type']
+                self.logger.info(Colored.green("[Downloader()]: 请求返回类型>>{0}".format(
+                    process_type)))
+                encoding = chardet.detect(byte_content)['encoding']
+                time.sleep(sleep_time)
+                if process_type:
+                    if process_type == TEXT:
+                        return decode_content(byte_content, encoding)
+                    elif process_type == JSON:
+                        text = decode_content(byte_content, encoding)
+                        return json.loads(text, encoding='utf-8')
+                    elif process_type == CSS:
+                        return bs(byte_content, 'html5lib')
+                text = decode_content(byte_content, encoding)
+                return etree.HTML(text)
+            except Exception as e:
+                retry_times += 1
+                self.logger.error(Colored.red("[Downloader()]: 目前下载URL =>{0} 重试次数[{1}/{2}] ERROR: {3}".
+                                              format(url, retry_times, max_retry, e)), exc_info=True)
+                sleep_time *= random.random() * self.sleep_factor
+                time.sleep(sleep_time)
+        # else:
+        #     pass
 
 
 def store_content(request_dict: Dict, byte_content: bytes) -> None:

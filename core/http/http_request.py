@@ -26,6 +26,7 @@ class HTTPRequestTemplate(object):
                  'sleep_time',
                  'render',
                  'use_proxy',
+                 'use_session',
                  'cookies',
                  'return_type',
                  'return_item',
@@ -41,7 +42,7 @@ class HTTPRequestTemplate(object):
     def __init__(self, request_id, start_url=None, method=GET, post_data=None,
                  referer=None, process=None, parameters=None,
                  category="", timeout=None, sleep_time=0.5, render=False,
-                 use_proxy=None, cookies=None, return_type=HTML,
+                 use_proxy=None, cookies=None, return_type=HTML, use_session=False,
                  return_item=None, is_duplicate=False, is_multiple=False,
                  result=None, next_request=None, parallel_request=None, stopped=None, extra_headers=None):
         self.request_id = request_id
@@ -56,6 +57,7 @@ class HTTPRequestTemplate(object):
         self.sleep_time = sleep_time
         self.render = render
         self.use_proxy = use_proxy
+        self.use_session = use_session
         self.cookies = cookies
         self.return_type = return_type
         self.return_item = return_item
@@ -88,6 +90,7 @@ class HTTPRequestTemplate(object):
             'sleep_time': self.sleep_time,
             'render': self.render,
             'use_proxy': self.use_proxy,
+            'use_session': self.use_session,
             'cookies': self.cookies,
             'return_type': self.return_type,
             'return_item': self.return_item,

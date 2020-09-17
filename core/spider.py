@@ -258,6 +258,7 @@ class Liz2Bird(object):
         """
         self.spider_status = SpiderStatus.Stopping
         self.spider_status = SpiderStatus.Stopped
+        self.download.close()
         # 清除 task 为空的全局参数
         topics = self.queue.find(TEMPLATES_TOPIC, way=WayType.HKEYS)
         topics = [topic.decode('utf-8') for topic in topics]
