@@ -47,6 +47,8 @@ class Downloader(object):
     def close(self):
         self.session_container.clear()
 
+    __del__ = close
+
     async def single_download(self, task: Task):
         headers = {
             'User-Agent': ua.random
@@ -87,7 +89,7 @@ class Downloader(object):
             try:
                 request = Any
                 session = httpx.AsyncClient(proxies=proxy)
-                if http_request['use_session'] or task.parameters['use_session']:
+                if http_request.get('use_session', None) or task.parameters.get('use_session', None):
                     self.session_container.setdefault(task.parameters['spider_name'], session)
                     session = self.session_container.get(task.parameters['spider_name'])
                 async with session:
