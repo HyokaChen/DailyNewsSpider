@@ -45,7 +45,7 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "url": "//ul[@class='ulcl']/li/a/@href#list"
+      "url": "//ul[@class='datel']/li/a/@href#list"
     },
     {
       "result_id": 2,
