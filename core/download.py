@@ -88,7 +88,7 @@ class Downloader(object):
                 self.logger.info(Colored.green("[Downloader()]: 目前使用代理 =>{0}".format(proxy)))
             try:
                 request = Any
-                session = httpx.AsyncClient(proxies=proxy)
+                session = httpx.AsyncClient(proxies=proxy, verify=False)
                 if http_request.get('use_session', None) or task.parameters.get('use_session', None):
                     self.session_container.setdefault(task.parameters['spider_name'], session)
                     session = self.session_container.get(task.parameters['spider_name'])
