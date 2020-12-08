@@ -1,74 +1,55 @@
 {
-  "START_URL": "https://xw.qq.com/m/ac",
+  "START_URL": "https://new.qq.com/ch/comic/",
   "SPIDER_NAME": "TencentComicNewsSpider",
   "SITE_NAME": "tencent",
-  "REFERER": "https://xw.qq.com/m/ac",
+  "REFERER": "https://new.qq.com/ch/comic/",
   "METHOD": "GET",
   "REQUESTS": [
     {
       "request_id": 1,
       "method": "GET",
-      "process": "PROCESSES.1",
       "result": "RESULTS.1",
       "next_request": "REQUESTS.2"
     },
     {
       "request_id": 2,
-      "start_url": "https://pacaio.match.qq.com/irs/rcd?cid=157&ext=3&token=593f1fd3863d9e415ece769999ff924e&page={page}&num=20",
-      "parameters": "RESULTS.1 & RESULTS.2.page",
-      "process": "PROCESSES.2",
+      "start_url": "https://i.news.qq.com/trpc.qqnews_web.kv_srv.kv_srv_http_proxy/list?sub_srv_id=comic&srv_id=pc&offset=0&limit=20&strategy=1&ext={%22pool%22:[%22top%22],%22is_filter%22:10,%22check_type%22:true}",
       "return_type": "json",
       "result": "RESULTS.2",
-      "next_request": "REQUESTS.3",
-      "is_multiple": true,
-      "stopped": "max_page"
+      "next_request": "REQUESTS.3"
     },
     {
       "request_id": 3,
       "start_url": "RESULTS.2.url",
       "result": "RESULTS.3",
-      "return_type": "css",
       "is_duplicate": true,
       "return_item": "items.HotNewsItem"
     }
   ],
   "PROCESSES": [
-    {
-      "process_id": 1,
-      "process_method": "spiders.new_tencent_spider.first_process"
-    },
-    {
-      "process_id": 2,
-      "process_method": "spiders.new_tencent_spider.second_process",
-      "parameters": "RESULTS.2.page"
-    }
   ],
   "RESULTS": [
     {
       "result_id": 1,
-      "page": 0,
-      "global_parameter": "page"
+      "empty": "EMPTY"
     },
     {
       "result_id": 2,
-      "page": "{page} + 1",
-      "max_page": "1",
-      "title": "data>title",
-      "url": "data>vurl",
-      "author": "data>source",
-      "news_time": "data>publish_time",
-      "description": "data>intro",
-      "global_parameter": "page"
+      "title": "data>list>title",
+      "url": "data>list>url",
+      "author": "data>list>media_name",
+      "news_time": "data>list>publish_time",
+      "description": ""
     },
     {
       "result_id": 3,
-      "content": " "
+      "content": "//div[@class='content-article']/p/text()#text"
     }
   ],
   "RENDER": false,
   "TIMEOUT": 10,
   "USE_PROXY": false,
-  "SLEEP_TIME": 10,
+  "SLEEP_TIME": 20,
   "SESSION": true,
   "MAX_SESSION_TIMES": 10,
   "COOKIES": "",
