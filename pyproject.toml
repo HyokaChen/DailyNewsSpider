@@ -33,6 +33,8 @@ bs4 = "*"
 cchardet = "*"
 httpx = "^0.13.3"
 uvloop = "^0.14.0"
+PyYaml = "^5.3.1"
+certifi = "^2020.11.8"
 
 [tool.poetry.dev-dependencies]
 

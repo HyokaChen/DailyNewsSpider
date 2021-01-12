@@ -78,6 +78,7 @@ class ReadTemplateJson(object):
                 _temp_dict = json.load(f)
             yield _temp_dict  # HyokaTemplate(_temp_dict)
         else:
+            # yaml.safe_load('xx.yaml')
             all_files = os.listdir(dir_path)
             for file in all_files:
                 if 'Template' in str(file) and ".json" in str(file):

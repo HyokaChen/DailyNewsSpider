@@ -14,7 +14,7 @@ import json
 from hashlib import md5
 from utils.db_util import rdb
 from utils.bloom_filter import BloomFilter
-from config.constant import PROCESSES_DOT, RESULTS_DOT, REQUESTS_DOT, WayType
+from config.constant import PROCESSES_DOT, RESULTS_DOT, REQUESTS_DOT, WayType, MAX_LEN
 
 
 class Task(object):
@@ -100,8 +100,34 @@ class TaskQueue(object):
     def delete(self, topic: str, way: WayType, key=None):
         raise NotImplementedError
 
+    def add_task(self, stream: str, task):
+        raise NotImplementedError
+
+    def receive_task(self, stream: str, group: str, consumer: str):
+        raise NotImplementedError
+
 
 class RedisTaskQueue(TaskQueue):
+    def receive_task(self, stream: str, group: str, consumer: str):
+        # TODO: 采用 stream 模式获取任务
+        return rdb.xreadgroup(groupname=group,
+                              consumername=consumer,
+                              streams=stream,
+                              count=1,
+                              noack=True)
+
+    def add_task(self, stream: str, task):
+        # TODO: 采用 stream 模式添加任务
+        str_input = json.loads(task, encoding='utf-8')
+        is_duplicate = str_input['request']['is_duplicate']
+        spider_name = str_input['parameters']['spider_name']
+        if is_duplicate:
+            if not self.bloom_filter.is_contains(spider_name, str_input['task_id'].encode('utf-8')):
+                rdb.xadd(stream, task, id='*', maxlen=MAX_LEN)
+                self.bloom_filter.insert(spider_name, str_input['task_id'].encode('utf-8'))
+        else:
+            rdb.xadd(stream, task, id='*', maxlen=MAX_LEN)
+
     def __init__(self):
         self.bloom_filter = BloomFilter()
 

@@ -20,7 +20,7 @@ from core.queue import RedisTaskQueue
 @click.option("--master", "-m", default=False)
 @click.option("--path", "-p", default="./", type=str)
 def run(master, path):
-    liz = Liz2Bird('./HotNewsTemplate/IThomeTemplate.json', Downloader(), RedisProcessContent(), RedisTaskQueue())
+    liz = Liz2Bird('./HotNewsTemplate/3DMGameTemplate.json', Downloader(), RedisProcessContent(), RedisTaskQueue())
     liz.run(is_master=master)
 
 

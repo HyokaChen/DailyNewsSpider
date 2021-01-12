@@ -1,4 +1,5 @@
-# DailyNewsSpider
+![DailyNewsSpider](./DailyNewsSpider.png)
+
 
 [每日随机资讯](https://blog.emptychan.xyz)的新闻资讯来源
 
@@ -24,4 +25,19 @@
 - [x] [SegmentFault](https://segmentfault.com/)
 - [x] [虎嗅](https://www.huxiu.com/)
 - [x] [HackerNews](https://hackernews.io/)
+
+#### 安装步骤
+
+1. 安装 redis, MacOS 底下可以采用 Homebrew 安装 redis，命令```brew install redis```
+1. 安装 [mongodb](https://docs.mongodb.com/manual/installation/)
+2. 安装 [python 3.7.4](https://www.python.org/downloads/)以上，并安装[poetry](https://python-poetry.org/)
+3. 在代码的当前目录执行```poetry install```来安装环境依赖
+
+#### 执行程序
+
+```bash
+python insert_new_item_template.py  # 具体的 item定义查看这个 python 文件
+python main.py -m True
+python main.py
+```
 

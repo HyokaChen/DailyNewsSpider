@@ -87,6 +87,7 @@
   "RANGE_TIME": "",
   "RETURN_TYPE": "html",
   "DATA_TABLE": "mongo@paper",
-  "PRIORITY": 1
+  "PRIORITY": 1,
+  "https://xuangubao.cn/live": "//div[@id='nuxt-layout-container']//div[@infinite-scroll-disabled='busy']//ul/li/div/div"
 }
 

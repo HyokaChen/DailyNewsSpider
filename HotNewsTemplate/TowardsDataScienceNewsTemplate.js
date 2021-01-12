@@ -1,8 +1,8 @@
 {
-  "START_URL": "http://hackernews.io/",
-  "SPIDER_NAME": "HackerNewsSpider",
-  "SITE_NAME": "hackernews",
-  "REFERER": "http://hackernews.io/",
+  "START_URL": "https://towardsdatascience.com/",
+  "SPIDER_NAME": "TowardsDataScienceNewsSpider",
+  "SITE_NAME": " towardsdatascience",
+  "REFERER": "https://towardsdatascience.com/",
   "METHOD": "GET",
   "REQUESTS": [
     {
@@ -14,22 +14,14 @@
     },
     {
       "request_id": 2,
-      "start_url": "http://api.hackernews.io/news?page=1",
-      "process": "PROCESSES.2",
+      "start_url": "RESULTS.1.url",
       "extra_headers": {
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "same-origin",
+        "Sec-Fetch-User": "?1",
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3858.0 Safari/537.36 Edg/77.0.229.0"
       },
-      "return_type": "json",
       "result": "RESULTS.2",
-      "next_request": "REQUESTS.3"
-    },
-    {
-      "request_id": 3,
-      "start_url": "RESULTS.2.url",
-      "extra_headers": {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3858.0 Safari/537.36 Edg/77.0.229.0"
-      },
-      "result": "RESULTS.3",
       "return_type": "css",
       "is_duplicate": true,
       "return_item": "items.HotNewsItem"
@@ -49,24 +41,24 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "empty": "empty"
+      "page": "{page} + 1",
+      "max_page": "1",
+      "title": "//div[@class='news-list']/div/div/a[@target='_blank']//h4/text()#list",
+      "part_url": "//div[@class='news-list']/div/div/a[@target='_blank']/@href#list",
+      "url": "$https://segmentfault.com/{part_url}",
+      "author": "//div[@class='news-list']/div//span[contains(@class, 'author')]/a/text()#list",
+      "description": ""
     },
     {
       "result_id": 2,
-      "title": ">title",
-      "url": ">url",
-      "author": ">user",
-      "news_time": ">time",
-      "description": ">title"
-    },
-    {
-      "result_id": 3,
-      "content": ""
+      "temp_time": "div#sf-article_tags > div > time[itemprop='datePublished']::text",
+      "news_time": "发布于\\W(.*)@temp_time#one",
+      "content": "article.article::text"
     }
   ],
   "RENDER": false,
-  "TIMEOUT": 100,
-  "USE_PROXY": true,
+  "TIMEOUT": 10,
+  "USE_PROXY": false,
   "SLEEP_TIME": 10,
   "SESSION": true,
   "MAX_SESSION_TIMES": 10,
