@@ -1,0 +1,57 @@
+{
+  "START_URL": "http://acg.178.com/",
+  "SPIDER_NAME": "Acg178NewsSpider",
+  "SITE_NAME": "acg178",
+  "REFERER": "http://acg.178.com/",
+  "METHOD": "GET",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "method": "GET",
+      "process": "PROCESSES.1",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "RESULTS.1.url",
+      "result": "RESULTS.2",
+      "return_type": "css",
+      "is_duplicate": true,
+      "return_item": "items.HotNewsItem"
+    }
+  ],
+  "PROCESSES": [
+    {
+      "process_id": 1,
+      "process_method": "spiders.new_tencent_spider.first_process"
+    }
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "part_url": "//div[@class='imgtextlist']//li//p/a/@href#list",
+      "url": "$http://acg.178.com/{part_url}",
+      "title": "//div[@class='imgtextlist']//li//p/a/text()#list",
+      "description": ""
+    },
+    {
+      "result_id": 2,
+      "author": ".info > span.author::text",
+      "news_time": ".info > span.time::text",
+      "content": "div.article > div.bd::text"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 2000,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@animation",
+  "PRIORITY": 1
+}
+
