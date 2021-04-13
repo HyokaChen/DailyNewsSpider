@@ -41,15 +41,15 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "title": "//div[@class='news-list']/div/div/a[@target='_blank']//h4/text()#list",
-      "part_url": "//div[@class='news-list']/div/div/a[@target='_blank']/@href#list",
+      "title": "//li[contains(@class, 'article-item')]//h6/a/text()#list",
+      "part_url": "//li[contains(@class, 'article-item')]//h6/a/@href#list",
       "url": "$https://segmentfault.com{part_url}",
-      "author": "//div[@class='news-list']/div//span[contains(@class, 'author')]/a/text()#list",
+      "author": "//li[contains(@class, 'article-item')]//div/a/text()#list",
       "description": ""
     },
     {
       "result_id": 2,
-      "news_time": "div#sf-article_tags > div > time[itemprop='datePublished']::datetime",
+      "news_time": "time[itemprop='datePublished']::datetime",
       "content": "article.article::text"
     }
   ],
