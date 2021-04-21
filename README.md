@@ -8,7 +8,7 @@
 - [x] [Acg 门户](https://www.acgmh.com/category/news)
 - [x] [Bing 壁纸](https://cn.bing.com/)
 - [x] [CTOLIB](https://www.ctolib.com/)
-- [x] [动漫之家](https://www.dmzj.com/)
+- [x] [动漫之家](https://www.dmzj1.com/)
 - [x] [IT之家](https://www.ithome.com/list/)
 - [x] [Papers With Code](https://paperswithcode.com/latest)
 - [x] [起点中文网](https://www.qidian.com/)
@@ -25,6 +25,7 @@
 - [x] [SegmentFault](https://segmentfault.com/)
 - [x] [虎嗅](https://www.huxiu.com/)
 - [x] [HackerNews](https://hackernews.io/)
+- [x] [比特币家园](https://www.btc126.com/lives/)
 
 #### 安装步骤
 
