@@ -1,8 +1,8 @@
 {
-  "START_URL": "https://www.dmzj.com/",
+  "START_URL": "https://www.dmzj1.com/",
   "SPIDER_NAME": "DmzjNewsSpider",
   "SITE_NAME": "dmzj",
-  "REFERER": "https://www.dmzj.com/",
+  "REFERER": "https://www.dmzj1.com/",
   "METHOD": "GET",
   "REQUESTS": [
     {
@@ -14,7 +14,7 @@
     },
     {
       "request_id": 2,
-      "start_url": "https://news.dmzj.com/",
+      "start_url": "https://news.dmzj1.com/",
       "parameters": "RESULTS.1",
       "process": "PROCESSES.2",
       "return_type": "html",
@@ -25,7 +25,7 @@
     },
     {
       "request_id": 3,
-      "start_url": "https://news.dmzj.com/p{page}.html",
+      "start_url": "https://news.dmzj1.com/p{page}.html",
       "parameters": "RESULTS.2.page",
       "process": "PROCESSES.2",
       "return_type": "html",

@@ -10,7 +10,7 @@
  @License    : (C) Copyright 2016-2020, iFuture Corporation Limited.
 """
 import time
-from config.constant import StatusType, NextType
+from config.constant import StatusType
 
 
 class ProcessTask(object):

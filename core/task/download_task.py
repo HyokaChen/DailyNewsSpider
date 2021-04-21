@@ -10,7 +10,7 @@
  @License    : (C) Copyright 2016-2020, iFuture Corporation Limited.
 """
 import time
-from config.constant import StatusType, NextType
+from config.constant import StatusType
 
 
 class DownloadTask(object):
@@ -18,7 +18,7 @@ class DownloadTask(object):
     下载任务实体类
     """
     def __init__(self, task_name: str, download_url: str,
-                 status: StatusType, next_to: NextType,
+                 status: StatusType,
                  pre_task_id: str, retry_times: int = 0,
                  extra_data: dict = None):
         """
@@ -26,7 +26,6 @@ class DownloadTask(object):
         :param task_name: 任务名称
         :param download_url: 下载链接
         :param status: 状态
-        :param next_to: 下一个流向
         :param pre_task_id: 前置任务 id
         :param retry_times: 任务重试次数
         :param extra_data: 额外数据
@@ -35,7 +34,6 @@ class DownloadTask(object):
         self._task_id = f"{task_name}-{str(time.time()) * 1000}"
         self._download_url = download_url
         self._status = status
-        self._next_to = next_to
         self._pre_task_id = pre_task_id
         self._retry_times = retry_times
         self._extra_data = extra_data
@@ -120,7 +118,6 @@ class DownloadTask(object):
             'task_id': self._task_id,
             'download_url': self._download_url,
             'status': self._status,
-            'next_to': self._next_to,
             'pre_task_id': self._pre_task_id,
             'retry_times': self._retry_times,
             'extra_data': self._extra_data

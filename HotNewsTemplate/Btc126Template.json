@@ -1,18 +1,18 @@
 {
-  "START_URL": "https://www.3dmgame.com/",
-  "SPIDER_NAME": "3DMGameSpide",
-  "SITE_NAME": "3dmgame",
+  "START_URL": "https://www.btc126.com/lives/",
+  "SPIDER_NAME": "Btc126Spide",
+  "SITE_NAME": "btc126",
   "METHOD": "GET",
-  "REFERER": "https://www.3dmgame.com/",
+  "REFERER": "https://www.btc126.com/",
   "REQUESTS": [
     {
       "request_id": 1,
       "extra_headers": {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.34 Safari/537.36 Edg/78.0.276.11"
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36 Edg/90.0.818.42"
       },
-      "return_type": "html",
-      "timeout": "20000",
       "process": "PROCESSES.1",
+      "timeout": "20000",
+      "return_type": "html",
       "result": "RESULTS.1",
       "next_request": "REQUESTS.2"
     },
@@ -28,7 +28,7 @@
       "return_type": "css",
       "timeout": "20000",
       "is_duplicate": true,
-      "return_item": "items.GameItem"
+      "return_item": "items.HotNewsItem"
     }
   ],
   "PROCESSES": [
@@ -45,25 +45,29 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "url": "//div[@class='Listwrap']//ul[1]/li/a/@href#list",
-      "title": "//div[@class='Listwrap']//ul[1]/li/a/text()#list"
+      "part_url": "//ul[@id='content']//a[@class='title']/@href#list",
+      "url": "$https://www.btc126.com/{part_url}"
     },
     {
       "result_id": 2,
-      "content": "div.news_warp_center::text",
-      "news_time": "div.time > span::text"
+      "title": "h1.title::text",
+      "author": "比特币家园",
+      "description": "",
+      "content": "div.con::text",
+      "temp_time": "div.left_1 div.info::text",
+      "news_time": "/\n\n(.*?)\n\n/@temp_time#one"
     }
   ],
   "RENDER": false,
   "TIMEOUT": 200,
-  "USE_PROXY": true,
-  "SLEEP_TIME": 100,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
   "SESSION": true,
   "MAX_SESSION_TIMES": 10,
   "COOKIES": "",
   "RANGE_TIME": "",
   "RETURN_TYPE": "html",
-  "DATA_TABLE": "mongo@game",
+  "DATA_TABLE": "mongo@technology",
   "PRIORITY": 1
 }
 

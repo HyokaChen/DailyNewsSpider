@@ -87,7 +87,7 @@ def format_data(data, node_path, reg_idx=ONE):
     :return: 处理路径指定需要的数据
     """
     result = None
-    print('**********{0}'.format(node_path))
+    print('**********{0}'.format(node_path.replace("\n", "")))
     if isinstance(node_path, str) and node_path != "":
         if DIAGONAL in node_path and isinstance(data, _Element):
             node, *list_or_one_or_text_list = node_path.split(HASH)

@@ -66,12 +66,6 @@ class StatusType(Enum):
     FAIL = 2
 
 
-@unique
-class NextType(Enum):
-    SCHEDULER = 0
-    PROCESSOR = 1
-
-
 CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
 ENVIRONMENT = EnvironmentType.DEV
 if ENVIRONMENT == EnvironmentType.DEV:
