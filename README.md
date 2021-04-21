@@ -26,6 +26,7 @@
 - [x] [虎嗅](https://www.huxiu.com/)
 - [x] [HackerNews](https://hackernews.io/)
 - [x] [比特币家园](https://www.btc126.com/lives/)
+- [x] [开源中国资讯](https://www.oschina.net/news)
 
 #### 安装步骤
 

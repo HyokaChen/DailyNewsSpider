@@ -1,0 +1,71 @@
+{
+  "START_URL": "https://www.oschina.net/news",
+  "SPIDER_NAME": "OSchinaSpide",
+  "SITE_NAME": "oschina",
+  "METHOD": "GET",
+  "REFERER": "https://www.oschina.net/news",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "extra_headers": {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36 Edg/90.0.818.42"
+      },
+      "process": "PROCESSES.1",
+      "timeout": "20000",
+      "return_type": "html",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "RESULTS.1.url",
+      "extra_headers": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1"
+      },
+      "result": "RESULTS.2",
+      "return_type": "css",
+      "timeout": "20000",
+      "is_duplicate": true,
+      "return_item": "items.HotNewsItem"
+    }
+  ],
+  "PROCESSES": [
+    {
+      "process_id": 1,
+      "process_method": "spiders.new_tencent_spider.first_process"
+    },
+    {
+      "process_id": 2,
+      "process_method": "spiders.new_tencent_spider.second_process",
+      "parameters": "RESULTS.2.page"
+    }
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "url": "//div[contains(@class, 'news-item')]/@data-url#list"
+    },
+    {
+      "result_id": 2,
+      "title": "h1.article-box__title > a::text",
+      "author": "div.article-box__meta div:nth-child(2) a::text",
+      "description": "",
+      "content": "div.article-detail > div.content::text",
+      "news_time": "div.article-box__meta  div:nth-child(3)::text"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 200,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@technology",
+  "PRIORITY": 1
+}
+
