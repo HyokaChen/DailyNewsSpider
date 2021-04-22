@@ -1,0 +1,72 @@
+{
+  "START_URL": "https://www.hupu.com/",
+  "SPIDER_NAME": "HupuNewsSpider",
+  "SITE_NAME": "hupu",
+  "REFERER": "https://www.hupu.com/",
+  "METHOD": "GET",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "start_url": "https://www.hupu.com/home/v1/news?pageNo=1&pageSize=20",
+      "method": "GET",
+      "return_type": "json",
+      "process": "PROCESSES.1",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "RESULTS.1.url",
+      "extra_headers": {
+        "sec-ch-ua-mobile": "?0",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36 Edg/90.0.818.42",
+        "sec-fetch-des": "document"
+      },
+      "result": "RESULTS.2",
+      "return_type": "css",
+      "is_duplicate": true,
+      "return_item": "items.HotNewsItem"
+    }
+  ],
+  "PROCESSES": [
+    {
+      "process_id": 1,
+      "process_method": "spiders.new_tencent_spider.first_process"
+    },
+    {
+      "process_id": 2,
+      "process_method": "spiders.new_tencent_spider.second_process",
+      "parameters": "RESULTS.2.page"
+    }
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "title": "data>title",
+      "tid": "data>tid",
+      "url": "$https://bbs.hupu.com/{tid}.html",
+      "description": "//div[@class='list-item-info']/a/div[contains(@class, 'list-item-desc')]/text()#list"
+    },
+    {
+      "result_id": 2,
+      "author": "div.author >div.left > a::text",
+      "news_time": "span.stime::text",
+      "content": ""
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 10,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@tencent",
+  "PRIORITY": 1
+}
+
