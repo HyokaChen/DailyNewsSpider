@@ -48,7 +48,7 @@
       "title": "data>title",
       "tid": "data>tid",
       "url": "$https://bbs.hupu.com/{tid}.html",
-      "description": "//div[@class='list-item-info']/a/div[contains(@class, 'list-item-desc')]/text()#list"
+      "description": "data>content"
     },
     {
       "result_id": 2,
