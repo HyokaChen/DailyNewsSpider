@@ -45,7 +45,7 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "url": "//div[contains(@class, 'news-item')]/@data-url#list"
+      "url": "//div[contains(@class, 'item news-item')]/@data-url#list"
     },
     {
       "result_id": 2,
