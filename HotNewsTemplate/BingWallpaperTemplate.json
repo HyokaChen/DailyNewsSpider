@@ -44,7 +44,7 @@
     },
     {
       "result_id": 2,
-      "part_url": "link#bgLink::href",
+      "part_url": "#bgImgProgLoad::data-ultra-definition-src",
       "url": "$https://cn.bing.com{part_url}"
     }
   ],

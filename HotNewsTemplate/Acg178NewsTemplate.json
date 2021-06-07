@@ -31,7 +31,7 @@
     {
       "result_id": 1,
       "part_url": "//div[@class='imgtextlist']//li//p/a/@href#list",
-      "url": "$http://acg.178.com/{part_url}",
+      "url": "$http://acg.178.com{part_url}",
       "title": "//div[@class='imgtextlist']//li//p/a/text()#list",
       "description": ""
     },
@@ -43,9 +43,9 @@
     }
   ],
   "RENDER": false,
-  "TIMEOUT": 2000,
+  "TIMEOUT": 20,
   "USE_PROXY": false,
-  "SLEEP_TIME": 10,
+  "SLEEP_TIME": 1,
   "SESSION": true,
   "MAX_SESSION_TIMES": 10,
   "COOKIES": "",
