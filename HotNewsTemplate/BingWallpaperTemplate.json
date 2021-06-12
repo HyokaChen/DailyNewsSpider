@@ -14,7 +14,7 @@
     },
     {
       "request_id": 2,
-      "start_url": "https://cn.bing.com/?FORM=BEHPTB&ensearch=1",
+      "start_url": "https://cn.bing.com/?ensearch=1",
       "extra_headers": {
         "sec-fetch-mode": "navigate",
         "sec-fetch-site": "none",
@@ -44,7 +44,7 @@
     },
     {
       "result_id": 2,
-      "part_url": "#bgImgProgLoad::data-ultra-definition-src",
+      "part_url": "#bgLink::href",
       "url": "$https://cn.bing.com{part_url}"
     }
   ],
