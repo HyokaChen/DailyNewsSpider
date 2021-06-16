@@ -44,7 +44,7 @@
     },
     {
       "result_id": 2,
-      "part_url": "#bgLink::href",
+      "part_url": "head link#bgLink::href",
       "url": "$https://cn.bing.com{part_url}"
     }
   ],
