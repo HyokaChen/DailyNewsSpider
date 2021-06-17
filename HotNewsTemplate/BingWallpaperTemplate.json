@@ -7,43 +7,24 @@
   "REQUESTS": [
     {
       "request_id": 1,
-      "result": "RESULTS.1",
-      "return_type": "html",
-      "timeout": "20000",
-      "next_request": "REQUESTS.2"
-    },
-    {
-      "request_id": 2,
-      "start_url": "https://cn.bing.com/?ensearch=1",
+      "start_url": "https://cn.bing.com/?FORM=BEHPTB",
       "extra_headers": {
         "sec-fetch-mode": "navigate",
         "sec-fetch-site": "none",
-        "sec-fetch-user": "?1"
+        "sec-fetch-user": "?1",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36 Edg/91.0.864.48"
       },
-      "result": "RESULTS.2",
+      "result": "RESULTS.1",
       "return_type": "css",
       "timeout": "20000",
       "return_item": "items.ImageItem"
     }
   ],
   "PROCESSES": [
-    {
-      "process_id": 1,
-      "process_method": "spiders.new_tencent_spider.first_process"
-    },
-    {
-      "process_id": 2,
-      "process_method": "spiders.new_tencent_spider.second_process",
-      "parameters": "RESULTS.2.page"
-    }
   ],
   "RESULTS": [
     {
       "result_id": 1,
-      "x": "placeholder"
-    },
-    {
-      "result_id": 2,
       "part_url": "head link#bgLink::href",
       "url": "$https://cn.bing.com{part_url}"
     }
