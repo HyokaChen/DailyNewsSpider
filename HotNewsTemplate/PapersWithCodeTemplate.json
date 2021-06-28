@@ -74,7 +74,7 @@
     },
     {
       "result_id": 3,
-      "title": "div.paper-title > div > div > h1::text",
+      "title": "div.paper-title h2::text",
       "author": "div.authors > p > span::text",
       "description": "div.paper-abstract > div > div > p::text",
       "tags": "div.paper-tasks > div > div > ul.list-unstyled > li > a > span::text",
