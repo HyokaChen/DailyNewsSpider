@@ -36,7 +36,7 @@ class BloomFilter(object):
                                     retry_on_timeout=10,
                                     password=REDIS_PWD)
         self.server = redis.StrictRedis(connection_pool=pool)
-        self.bit_size = 1 << 30  # Redis的String类型最大容量为512M，现使用256M
+        self.bit_size = 1 << 20  # Redis的String类型最大容量为512M，现使用256M
         self.seeds = [5, 7, 11, 13, 31, 37, 61]
         self.blockNum = block_num
         self.hashfunc = []

@@ -1,8 +1,8 @@
 {
-  "START_URL": "http://hackernews.io/",
+  "START_URL": "https://hackernews.io/",
   "SPIDER_NAME": "HackerNewsSpider",
   "SITE_NAME": "hackernews",
-  "REFERER": "http://hackernews.io/",
+  "REFERER": "https://hackernews.io/",
   "METHOD": "GET",
   "REQUESTS": [
     {
@@ -14,7 +14,7 @@
     },
     {
       "request_id": 2,
-      "start_url": "http://api.hackernews.io/news?page=1",
+      "start_url": "https://api.hackernews.io/news?page=1",
       "process": "PROCESSES.2",
       "extra_headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3858.0 Safari/537.36 Edg/77.0.229.0"

@@ -1,0 +1,52 @@
+{
+  "START_URL": "https://www.yicai.com/",
+  "SPIDER_NAME": "YiFinanceSpider",
+  "SITE_NAME": "yi",
+  "REFERER": "https://www.yicai.com/",
+  "METHOD": "GET",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "method": "GET",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "RESULTS.1.url",
+      "category": "news",
+      "result": "RESULTS.2",
+      "is_duplicate": true,
+      "return_type": "css",
+      "return_item": "items.FinanceItem"
+    }
+  ],
+  "PROCESSES": [
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "part_url": "//div[@id='headlist']/a[@class]/@href#list",
+      "url": "$https://www.yicai.com{part_url}",
+      "title": "//div[@id='headlist']/a[@class]//h2/text()#list"
+    },
+    {
+      "result_id": 2,
+      "news_time": "div.title >p > em::text",
+      "description": "div.intro::text",
+      "content": ""
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 10,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@finance",
+  "PRIORITY": 1
+}
+

@@ -28,6 +28,7 @@
 - [x] [比特币家园](https://www.btc126.com/lives/)
 - [x] [开源中国资讯](https://www.oschina.net/news)
 - [x] [虎扑](https://www.hupu.com/)
+- [x] [第一财经](https://www.yicai.com/)
 
 #### 安装步骤
 
