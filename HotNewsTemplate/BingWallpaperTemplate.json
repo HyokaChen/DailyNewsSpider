@@ -25,7 +25,7 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "part_url": "head link#bgLink::href",
+      "part_url": "head link#preloadBg::href",
       "url": "$https://cn.bing.com{part_url}"
     }
   ],
