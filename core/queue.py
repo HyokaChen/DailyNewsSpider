@@ -148,7 +148,7 @@ class RedisTaskQueue(TaskQueue):
         if way == WayType.LPUSH:
             wait_tasks = []
             for task in tasks:
-                str_input = json.loads(task, encoding='utf-8')
+                str_input = json.loads(task)
                 is_duplicate = str_input['request']['is_duplicate']
                 spider_name = str_input['parameters']['spider_name']
                 if is_duplicate:

@@ -26,7 +26,7 @@ def sync_data2mongodb(logger=None):
     wait_publish_ids = []
     for item in items:
         try:
-            json_dict = json.loads(item, encoding='utf-8')
+            json_dict = json.loads(item)
             collection = json_dict.get('data_table', "").split(AT)[1]
             del json_dict['data_table']
             _id = json_dict['_id']

@@ -125,7 +125,7 @@ class Downloader(object):
                         return decode_content(byte_content, encoding)
                     elif process_type == JSON:
                         text = decode_content(byte_content, encoding)
-                        return json.loads(text, encoding='utf-8')
+                        return json.loads(text)
                     elif process_type == CSS:
                         return bs(byte_content, 'html5lib')
                 text = decode_content(byte_content, encoding)

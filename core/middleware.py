@@ -74,7 +74,7 @@ class DownloadMiddleware(Middleware):
 
 class QueueMiddleware(Middleware):
     def middle_origin2engine(self, *obj):
-        return [json.loads(o, encoding='utf-8') for o in obj]
+        return [json.loads(o) for o in obj]
 
     def middle_engine2origin(self, *obj):
         return [json.dumps(o, ensure_ascii=False) for o in obj]
