@@ -59,8 +59,8 @@
     }
   ],
   "RENDER": false,
-  "TIMEOUT": 200,
-  "USE_PROXY": false,
+  "TIMEOUT": 2000,
+  "USE_PROXY": true,
   "SLEEP_TIME": 10,
   "SESSION": true,
   "MAX_SESSION_TIMES": 10,

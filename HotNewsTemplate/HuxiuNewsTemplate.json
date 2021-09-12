@@ -42,8 +42,8 @@
     {
       "result_id": 1,
       "title": "//div[@class='img-slider']//h5/text()#list",
-      "data_params": "//div[@class='img-slider']//div[@data-log='expose']/@data-params#list",
-      "part_url": ",(\\d+)$@data_params#one",
+      "data_params": "//div[@class='img-slider']//div[@class='imgBox']/@event-track-params#list",
+      "part_url": "aid\":\"(\\d+)@data_params#one",
       "url": "$https://www.huxiu.com/article/{part_url}.html",
       "description": ""
     },
