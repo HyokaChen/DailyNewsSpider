@@ -17,8 +17,7 @@
       "parameters": "RESULTS.1",
       "return_type": "json",
       "result": "RESULTS.2",
-      "next_request": "REQUESTS.3",
-      "is_multiple": true
+      "next_request": "REQUESTS.3"
     },
     {
       "request_id": 3,
