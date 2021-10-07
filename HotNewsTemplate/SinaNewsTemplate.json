@@ -8,20 +8,17 @@
     {
       "request_id": 1,
       "method": "GET",
-      "process": "PROCESSES.1",
       "result": "RESULTS.1",
       "next_request": "REQUESTS.2"
     },
     {
       "request_id": 2,
-      "start_url": "http://feed.mix.sina.com.cn/api/roll/get?pageid={pageid}&lid={lid}&k=&num=50&page={page}&r={_random}",
-      "parameters": "RESULTS.1 & RESULTS.2.page",
-      "process": "PROCESSES.2",
+      "start_url": "http://feed.mix.sina.com.cn/api/roll/get?pageid={pageid}&lid={lid}&k=&num=50&page=1&r={_random}",
+      "parameters": "RESULTS.1",
       "return_type": "json",
       "result": "RESULTS.2",
       "next_request": "REQUESTS.3",
-      "is_multiple": true,
-      "stopped": "news_time"
+      "is_multiple": true
     },
     {
       "request_id": 3,
@@ -33,32 +30,19 @@
     }
   ],
   "PROCESSES": [
-    {
-      "process_id": 1,
-      "process_method": "spiders.new_sina_spider.first_process"
-    },
-    {
-      "process_id": 2,
-      "process_method": "spiders.new_sina_spider.second_process",
-      "parameters": "RESULTS.2.page"
-    }
   ],
   "RESULTS": [
     {
       "result_id": 1,
-      "page": 0,
       "pageid": "//div[@id=\"channelList\"]/a[1]/@pageid",
       "lid": "//div[@id=\"channelList\"]/a[1]/@s_id",
-      "_random": "random.random()",
-      "global_parameter": "page"
+      "_random": "random.random()"
     },
     {
       "result_id": 2,
-      "page": "{page} + 1",
       "title": "result>data>title",
       "url": "result>data>url",
-      "news_time": "result>data>ctime",
-      "global_parameter": "page"
+      "news_time": "result>data>ctime"
     },
     {
       "result_id": 3,
