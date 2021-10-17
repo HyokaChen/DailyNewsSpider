@@ -88,6 +88,7 @@ class Downloader(object):
                 self.logger.info(Colored.green("[Downloader()]: 目前使用代理 =>{0}".format(proxy)))
             try:
                 request = Any
+                ssl_context = httpx.create_ssl_context()
                 session = httpx.AsyncClient(proxies=proxy, verify=False)
                 if http_request.get('use_session', None) or task.parameters.get('use_session', None):
                     self.session_container.setdefault(task.parameters['spider_name'], session)
@@ -128,8 +129,7 @@ class Downloader(object):
                         return json.loads(text)
                     elif process_type == CSS:
                         return bs(byte_content, 'html5lib')
-                text = decode_content(byte_content, encoding)
-                return etree.HTML(text)
+                return etree.HTML(byte_content)
             except Exception as e:
                 retry_times += 1
                 self.logger.error(Colored.red("[Downloader()]: 目前下载URL =>{0} 重试次数[{1}/{2}] ERROR: {3}".

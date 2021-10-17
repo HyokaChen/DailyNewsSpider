@@ -19,7 +19,7 @@
         "Sec-Fetch-Mode": "navigate",
         "Sec-Fetch-Site": "same-origin",
         "Sec-Fetch-User": "?1",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3858.0 Safari/537.36 Edg/77.0.229.0"
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50"
       },
       "result": "RESULTS.2",
       "return_type": "css",
@@ -41,10 +41,10 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "title": "//li[contains(@class, 'article-item')]//h6/a/text()#list",
-      "part_url": "//li[contains(@class, 'article-item')]//h6/a/@href#list",
+      "title": "//div[contains(@class, 'ml-3')]//h6/a/text()#list",
+      "part_url": "//div[contains(@class, 'ml-3')]//h6/a/@href#list",
       "url": "$https://segmentfault.com{part_url}",
-      "author": "//li[contains(@class, 'article-item')]//div/a/text()#list",
+      "author": "//div[contains(@class, 'ml-3')]//div/a/text()#list",
       "description": ""
     },
     {
