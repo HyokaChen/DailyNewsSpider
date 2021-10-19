@@ -41,10 +41,10 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "title": "//div[contains(@class, 'ml-3')]//h6/a/text()#list",
-      "part_url": "//div[contains(@class, 'ml-3')]//h6/a/@href#list",
+      "title": "//li[contains(@class, 'article-item')]//h6/a/text()#list",
+      "part_url": "//li[contains(@class, 'article-item')]//h6/a/@href#list",
       "url": "$https://segmentfault.com{part_url}",
-      "author": "//div[contains(@class, 'ml-3')]//div/a/text()#list",
+      "author": "//li[contains(@class, 'article-item')]//div/a/text()#list",
       "description": ""
     },
     {

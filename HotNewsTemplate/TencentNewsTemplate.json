@@ -37,7 +37,8 @@
     {
       "result_id": 2,
       "title": "data>list>title",
-      "url": "data>list>url",
+      "part_url": "data>list>cms_id",
+      "url": "$https://new.qq.com/rain/a/{part_url}",
       "news_time": "data>list>publish_time"
     },
     {

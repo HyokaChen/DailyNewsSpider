@@ -24,6 +24,7 @@ from utils import generate_token, create_folder, dumps_content, loads_content, i
 from utils import decode_content
 from utils.proxy_utls import get_random_proxy
 from lxml import etree
+from lxml.etree import HTMLParser
 from bs4 import BeautifulSoup as bs
 from config.constant import ENVIRONMENT, EnvironmentType, GET, POST, TEXT, JSON, CSS
 from utils import UserAgent
@@ -100,6 +101,7 @@ class Downloader(object):
                             headers=headers,
                             timeout=timeout,
                             cookies=cookies,
+                            follow_redirects=True
                         )
                     elif method == POST:
                         request: Coroutine = session.post(
@@ -108,6 +110,7 @@ class Downloader(object):
                             headers=headers,
                             timeout=timeout,
                             cookies=cookies,
+                            follow_redirects=True
                         )
                     response: Response = await request
                     if response.status_code != httpx.codes.OK:
@@ -129,7 +132,9 @@ class Downloader(object):
                         return json.loads(text)
                     elif process_type == CSS:
                         return bs(byte_content, 'html5lib')
-                return etree.HTML(byte_content)
+                text = decode_content(byte_content, encoding).replace('\x00', '').strip().encode('utf-8')
+                parser = HTMLParser(encoding=encoding, remove_comments=True)
+                return etree.fromstring(text, parser)
             except Exception as e:
                 retry_times += 1
                 self.logger.error(Colored.red("[Downloader()]: 目前下载URL =>{0} 重试次数[{1}/{2}] ERROR: {3}".
