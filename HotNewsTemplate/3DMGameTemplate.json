@@ -45,8 +45,8 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "url": "//div[@class='Listwrap']//ul[1]/li/a/@href#list",
-      "title": "//div[@class='Listwrap']//ul[1]/li/a/text()#list"
+      "url": "//div[@class='news_ul']/div[@class='bd']//div[@class='lis']/a/@href#list",
+      "title": "//div[@class='news_ul']/div[@class='bd']//div[@class='lis']/a/text()#list"
     },
     {
       "result_id": 2,
