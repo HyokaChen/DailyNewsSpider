@@ -1,5 +1,6 @@
-![DailyNewsSpider](./DailyNewsSpider.png)
+![Alt](https://repobeats.axiom.co/api/embed/9accfd7fdec70082ecb9731aa0ddc150373c4d89.svg "Repobeats analytics image")
 
+![DailyNewsSpider](./DailyNewsSpider.png)
 
 [每日随机资讯](https://blog.emptychan.xyz)的新闻资讯来源
 
