@@ -58,8 +58,8 @@
     },
     {
       "result_id": 2,
-      "title": "//div[@class='book-mid-info']/h4/a/text()#list",
-      "part_url": "//div[@class='book-mid-info']/h4/a/@href#list",
+      "title": "//div[@class='book-mid-info']/h2/a/text()#list",
+      "part_url": "//div[@class='book-mid-info']/h2/a/@href#list",
       "book_id": "(\\d+)@part_url#one",
       "author": "//div[@class='book-mid-info']/p[@class='author']/a[1]/text()#list",
       "tags": "//div[@class='book-mid-info']/p[@class='author']/a[3]/text()#list"

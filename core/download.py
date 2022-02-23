@@ -83,6 +83,7 @@ class Downloader(object):
         max_time = int(http_request['sleep_time'])
         sleep_time = random.uniform(1, max_time)
         max_retry = random.randint(4, 15)
+        # https://github.com/PiotrDabkowski/Js2Py   js转python
         while retry_times < max_retry:
             proxy = get_random_proxy() if use_proxy else None
             if proxy is not None:
@@ -101,7 +102,7 @@ class Downloader(object):
                             headers=headers,
                             timeout=timeout,
                             cookies=cookies,
-                            follow_redirects=True
+                            allow_redirects=True
                         )
                     elif method == POST:
                         request: Coroutine = session.post(
@@ -110,7 +111,7 @@ class Downloader(object):
                             headers=headers,
                             timeout=timeout,
                             cookies=cookies,
-                            follow_redirects=True
+                            allow_redirects=True
                         )
                     response: Response = await request
                     if response.status_code != httpx.codes.OK:

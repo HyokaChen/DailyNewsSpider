@@ -82,7 +82,7 @@
     }
   ],
   "RENDER": false,
-  "TIMEOUT": 20000,
+  "TIMEOUT": 200000,
   "USE_PROXY": true,
   "SLEEP_TIME": 10,
   "SESSION": true,
