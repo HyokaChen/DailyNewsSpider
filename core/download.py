@@ -73,6 +73,7 @@ class Downloader(object):
             timeout = int(http_request['timeout'])
         else:
             timeout = int(task.parameters['timeout'])
+        timeout = min(timeout, 20)
         url = http_request['start_url']
         if 'cookies' in task.parameters and task.parameters['cookies']:
             cookies = task.parameters['cookies']
@@ -102,7 +103,7 @@ class Downloader(object):
                             headers=headers,
                             timeout=timeout,
                             cookies=cookies,
-                            allow_redirects=True
+                            follow_redirects=True
                         )
                     elif method == POST:
                         request: Coroutine = session.post(
@@ -111,7 +112,7 @@ class Downloader(object):
                             headers=headers,
                             timeout=timeout,
                             cookies=cookies,
-                            allow_redirects=True
+                            follow_redirects=True
                         )
                     response: Response = await request
                     if response.status_code != httpx.codes.OK:
