@@ -14,94 +14,42 @@
     },
     {
       "request_id": 2,
-      "start_url": "https://www.tuicool.com/a/?i=n",
-      "parameters": "RESULTS.1",
-      "process": "PROCESSES.2",
-      "extra_headers": {
-        "Host": "www.tuicool.com",
-        "Referer": "https://www.tuicool.com/login",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50"
-      },
-      "return_type": "html",
-      "result": "RESULTS.2",
-      "parallel_request": "REQUESTS.3",
-      "next_request": "REQUESTS.4"
-    },
-    {
-      "request_id": 3,
-      "start_url": "https://www.tuicool.com/a/1/{page}?lang=0",
-      "parameters": "RESULTS.2.page",
-      "process": "PROCESSES.2",
-      "extra_headers": {
-        "Host": "www.tuicool.com",
-        "Referer": "https://www.tuicool.com/login",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50"
-      },
-      "return_type": "html",
-      "result": "RESULTS.2",
-      "next_request": "REQUESTS.4",
-      "is_multiple": true,
-      "stopped": "max_page"
-    },
-    {
-      "request_id": 4,
-      "start_url": "RESULTS.2.url",
+      "start_url": "RESULTS.1.url",
       "referer": "https://www.tuicool.com/a/1?lang=0",
       "extra_headers": {
         "Host": "www.tuicool.com",
         "Referer": "https://www.tuicool.com/login",
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50"
       },
-      "result": "RESULTS.3",
+      "result": "RESULTS.2",
       "return_type": "css",
       "is_duplicate": true,
       "return_item": "items.HotNewsItem"
     }
   ],
   "PROCESSES": [
-    {
-      "process_id": 1,
-      "process_method": "spiders.new_tencent_spider.first_process"
-    },
-    {
-      "process_id": 2,
-      "process_method": "spiders.new_tencent_spider.second_process",
-      "parameters": "RESULTS.2.page"
-    }
   ],
   "RESULTS": [
     {
       "result_id": 1,
-      "page": 0,
-      "global_parameter": "page"
-    },
-    {
-      "result_id": 2,
-      "page": "{page} + 1",
-      "max_page": "1",
       "title": "//div[@class='aricle_item_info']/div[@class='title']//a/text()#list",
       "part_url": "//div[@class='aricle_item_info']/div[@class='title']//a/@href#list",
       "url": "$https://www.tuicool.com{part_url}",
       "author": "//div[@class='tip']/span[1]/text()#list",
-      "description": "",
-      "global_parameter": "page"
+      "news_time": "",
+      "description": "//div[@class='aricle_item_info']/div[@class='title']//a/text()#list"
     },
     {
-      "result_id": 3,
-      "temp_time": "span.timestamp::text",
-      "news_time": "时间\\W(.*)@temp_time#one",
-      "content": "div.article_body::text"
+      "result_id": 2,
+      "content": ""
     }
   ],
   "RENDER": false,
-  "TIMEOUT": 1000,
+  "TIMEOUT": 10,
   "USE_PROXY": false,
   "SLEEP_TIME": 10,
   "USE_SESSION": false,
   "MAX_SESSION_TIMES": 10,
-  "COOKIES": {
-    "__gads": "ID=4a38102b88894e8f-225e771d4cb9009f:T=1617023078:RT=1617023078:S=ALNI_MYPNAZdGZJnXGQWh1BN1DVCxJrD7g",
-    "_tuicool_session": "S2NSMHRSNXQ1ajZGc0ZkM1FGc3JrelNkNkdnZ3AzS2NleFo2UDl4TG5sdDZYV3kzU3VYOHRub253N1BCenVmZjdPZk5OQmJWa1ZsMEpwdEFMV2pCOGNzRFVON0IrZkg0SFFLdExwdmNWMTFRUGVZVlB2Vit4V1g2TFgzM2x1VEFvSEtyTGdkOUVkMVhmNUR1eERFRGg5aml1NzZjVm0zK3Y1SllWQzh0WGttQWJxNXNhOS80NUFqZnJ0TjZsakJWUW1hNGtUYUoybE5iY1pjbGNNeWdiZy9zVlR1L1JUNzRkS0x2bWpEc2M1U3dqY1NYUTFjRzNEQ0Rzb3NkZjFxN21kWGRXQ3NjMlc3T1k5Z25nckliQWxtek5TeUk0aEYyeWFEOWVFenh0WTNGTmp4Nk9oY2tRZ2xwNHlaNGRLaTZDcEJESmVRbE1hT1hZT21TRWhROHJSbzNJb3dZR1FyWDA4Qmg0ZzVJY3VvPS0tY1N3Nm5VV1QzOUdXZUdjajBneFBQQT09--f8d7c45a9b7c9cdee5131fba9ca65ac6654a87ab"},
   "RANGE_TIME": "",
   "RETURN_TYPE": "html",
   "DATA_TABLE": "mongo@technology",

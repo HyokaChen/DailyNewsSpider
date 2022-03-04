@@ -13,7 +13,7 @@
     },
     {
       "request_id": 2,
-      "start_url": "RESULTS.2.url",
+      "start_url": "RESULTS.1.url",
       "result": "RESULTS.2",
       "return_type": "css",
       "is_duplicate": true,
