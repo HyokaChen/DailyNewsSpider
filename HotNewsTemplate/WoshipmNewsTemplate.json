@@ -25,13 +25,13 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "title": "//div[@data-dts-event-location='new_article_items']/article//h2[@class='post-title']/a/@title#list",
       "url": "//div[@data-dts-event-location='new_article_items']/article//h2[@class='post-title']/a/@href#list",
       "author": "//div[@data-dts-event-location='new_article_items']/article//div[contains(@class, 'author')]/a/text()#list",
       "description": ""
     },
     {
       "result_id": 2,
+      "title": "h2::text",
       "news_time": "div.meta--sup > time::text",
       "content": "div.article--content::text"
     }
