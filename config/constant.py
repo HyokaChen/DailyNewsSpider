@@ -32,6 +32,7 @@ class SiteType(Enum):
     CTOLIB = 6
     PAPERSWITHCODE = 7
     HACKERNEWS = 8
+    TECH_SINA_NEWS = 9
 
 
 @unique
@@ -141,7 +142,8 @@ SITE_MAP = {
     'acgmh': SiteType.ACGMH,
     'ctolib': SiteType.CTOLIB,
     'paperswithcode': SiteType.PAPERSWITHCODE,
-    "hackernews": SiteType.HACKERNEWS
+    "hackernews": SiteType.HACKERNEWS,
+    "tech_sina_news": SiteType.TECH_SINA_NEWS
 }
 
 # 消息队列

@@ -197,10 +197,12 @@ def transform_datetime(date_str, site):
             result = parse(date_str).strftime(DATE_FMT)
         elif SITE_MAP[site] == SiteType.CTOLIB:
             result = parse(date_str).strftime(DATE_FMT)
+        elif SITE_MAP[site] == SiteType.TECH_SINA_NEWS:
+            result = parse(date_str, fuzzy_with_tokens=True)[0].strftime(DATE_FMT)
         elif date_str.strip() == '':
             result = datetime.now().strftime(DATE_FMT)
     else:
-        result = parse(date_str).strftime(DATE_FMT)
+        result = parse(date_str, fuzzy_with_tokens=True)[0].strftime(DATE_FMT)
     return result
 
 

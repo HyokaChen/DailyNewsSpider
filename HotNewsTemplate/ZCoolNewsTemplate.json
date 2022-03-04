@@ -1,0 +1,51 @@
+{
+  "START_URL": "https://www.zcool.com.cn/",
+  "SPIDER_NAME": "ZCoolNewsSpider",
+  "SITE_NAME": "zcool",
+  "REFERER": "https://www.zcool.com.cn/",
+  "METHOD": "GET",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "method": "GET",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "RESULTS.1.url",
+      "category": "news",
+      "result": "RESULTS.2",
+      "return_type": "css",
+      "is_duplicate": true,
+      "return_item": "items.NewsItem"
+    }
+  ],
+  "PROCESSES": [
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "title": "//div[@class='all-work-list']//div[@class='card-img']/a/@data-title#list",
+      "url": "//div[@class='all-work-list']//div[@class='card-img']/a/@href#list",
+      "temp_time": "//div[@class='all-work-list']//div[@class='card-item']/span[@class='time']/@title#list",
+      "news_time": "内容创建时间：(.*)@temp_time#one"
+    },
+    {
+      "result_id": 2,
+      "content": "div.atricle-text::text"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 100,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 20,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@animation",
+  "PRIORITY": 1
+}
+

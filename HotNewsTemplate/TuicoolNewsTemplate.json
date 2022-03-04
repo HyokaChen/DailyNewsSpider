@@ -14,20 +14,18 @@
     },
     {
       "request_id": 2,
-      "start_url": "https://www.tuicool.com/a/1/0?lang=0",
+      "start_url": "https://www.tuicool.com/a/?i=n",
       "parameters": "RESULTS.1",
       "process": "PROCESSES.2",
       "extra_headers": {
         "Host": "www.tuicool.com",
-        "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-Dest": "document",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3858.0 Safari/537.36 Edg/77.0.229.0"
+        "Referer": "https://www.tuicool.com/login",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50"
       },
       "return_type": "html",
       "result": "RESULTS.2",
       "parallel_request": "REQUESTS.3",
-      "next_request": "REQUESTS.4",
-      "stopped": "max_page"
+      "next_request": "REQUESTS.4"
     },
     {
       "request_id": 3,
@@ -36,9 +34,8 @@
       "process": "PROCESSES.2",
       "extra_headers": {
         "Host": "www.tuicool.com",
-        "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-Dest": "document",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3858.0 Safari/537.36 Edg/77.0.229.0"
+        "Referer": "https://www.tuicool.com/login",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50"
       },
       "return_type": "html",
       "result": "RESULTS.2",
@@ -52,9 +49,8 @@
       "referer": "https://www.tuicool.com/a/1?lang=0",
       "extra_headers": {
         "Host": "www.tuicool.com",
-        "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-Dest": "document",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3858.0 Safari/537.36 Edg/77.0.229.0"
+        "Referer": "https://www.tuicool.com/login",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50"
       },
       "result": "RESULTS.3",
       "return_type": "css",
@@ -98,12 +94,14 @@
     }
   ],
   "RENDER": false,
-  "TIMEOUT": 10,
+  "TIMEOUT": 1000,
   "USE_PROXY": false,
   "SLEEP_TIME": 10,
-  "USE_SESSION": true,
+  "USE_SESSION": false,
   "MAX_SESSION_TIMES": 10,
-  "COOKIES": {"_tuicool_session": "BAh7CEkiD3Nlc3Npb25faWQGOgZFVEkiJWRjOWRhNzY1YjlmZWFjM2NhMjU1YTg0MDdlMmFkNTJiBjsAVEkiEF9jc3JmX3Rva2VuBjsARkkiMWJNN3RMVzhIeWN3bXIzcVNDb3g1Rnc2U2tQN2RrejZESmZXRTIzZWZDTXc9BjsARkkiDHVzZXJfaWQGOwBGaQNVLAE%3D--88bf15f77d21b36235433a50bffccaca99fc0a8c"},
+  "COOKIES": {
+    "__gads": "ID=4a38102b88894e8f-225e771d4cb9009f:T=1617023078:RT=1617023078:S=ALNI_MYPNAZdGZJnXGQWh1BN1DVCxJrD7g",
+    "_tuicool_session": "S2NSMHRSNXQ1ajZGc0ZkM1FGc3JrelNkNkdnZ3AzS2NleFo2UDl4TG5sdDZYV3kzU3VYOHRub253N1BCenVmZjdPZk5OQmJWa1ZsMEpwdEFMV2pCOGNzRFVON0IrZkg0SFFLdExwdmNWMTFRUGVZVlB2Vit4V1g2TFgzM2x1VEFvSEtyTGdkOUVkMVhmNUR1eERFRGg5aml1NzZjVm0zK3Y1SllWQzh0WGttQWJxNXNhOS80NUFqZnJ0TjZsakJWUW1hNGtUYUoybE5iY1pjbGNNeWdiZy9zVlR1L1JUNzRkS0x2bWpEc2M1U3dqY1NYUTFjRzNEQ0Rzb3NkZjFxN21kWGRXQ3NjMlc3T1k5Z25nckliQWxtek5TeUk0aEYyeWFEOWVFenh0WTNGTmp4Nk9oY2tRZ2xwNHlaNGRLaTZDcEJESmVRbE1hT1hZT21TRWhROHJSbzNJb3dZR1FyWDA4Qmg0ZzVJY3VvPS0tY1N3Nm5VV1QzOUdXZUdjajBneFBQQT09--f8d7c45a9b7c9cdee5131fba9ca65ac6654a87ab"},
   "RANGE_TIME": "",
   "RETURN_TYPE": "html",
   "DATA_TABLE": "mongo@technology",

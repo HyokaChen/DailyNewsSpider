@@ -30,6 +30,9 @@
 - [x] [开源中国资讯](https://www.oschina.net/news)
 - [x] [虎扑](https://www.hupu.com/)
 - [x] [第一财经](https://www.yicai.com/)
+- [x] [新浪科技](https://tech.sina.com.cn/)
+- [x] [站酷网](https://www.zcool.com.cn/)
+- [x] [人人都是产品经理](http://www.woshipm.com/)
 
 #### 安装步骤
 

@@ -1,0 +1,51 @@
+{
+  "START_URL": "http://www.woshipm.com/",
+  "SPIDER_NAME": "WoshipmNewsSpider",
+  "SITE_NAME": "woshipm",
+  "REFERER": "http://www.woshipm.com/",
+  "METHOD": "GET",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "method": "GET",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "RESULTS.2.url",
+      "result": "RESULTS.2",
+      "return_type": "css",
+      "is_duplicate": true,
+      "return_item": "items.HotNewsItem"
+    }
+  ],
+  "PROCESSES": [
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "title": "//div[@data-dts-event-location='new_article_items']/article//h2[@class='post-title']/a/@title#list",
+      "url": "//div[@data-dts-event-location='new_article_items']/article//h2[@class='post-title']/a/@href#list",
+      "author": "//div[@data-dts-event-location='new_article_items']/article//div[contains(@class, 'author')]/a/text()#list",
+      "description": ""
+    },
+    {
+      "result_id": 2,
+      "news_time": "div.meta--sup > time::text",
+      "content": "div.article--content::text"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 10,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@sina",
+  "PRIORITY": 1
+}
+
