@@ -33,7 +33,7 @@
     },
     {
       "result_id": 2,
-      "content": "section.detailContentCss::text"
+      "content": "section.detailContentCss > div > div::text"
     }
   ],
   "RENDER": false,
