@@ -26,14 +26,14 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "title": "//div[@class='all-work-list']//div[@class='card-img']/a/@title#list",
-      "url": "//div[@class='all-work-list']//div[@class='card-img']/a/@href#list",
-      "temp_time": "//div[@class='all-work-list']//div[@class='card-item']/span[@class='time']/@title#list",
+      "title": "//section[contains(@class, 'allWorkList')]/div//div[contains(@class, 'cardImg')]//a/@title#list",
+      "url": "//section[contains(@class, 'allWorkList')]/div//div[contains(@class, 'cardImg')]//a/@href#list",
+      "temp_time": "//section[contains(@class, 'allWorkList')]/div//div[contains(@class, 'cardUserInfo')]/span/@title#list",
       "news_time": "内容创建时间：(.*)@temp_time#one"
     },
     {
       "result_id": 2,
-      "content": "div.atricle-text::text"
+      "content": "section.detailContentCss::text"
     }
   ],
   "RENDER": false,

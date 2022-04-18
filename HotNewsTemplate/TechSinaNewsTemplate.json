@@ -32,7 +32,7 @@
     },
     {
       "result_id": 2,
-      "content": "div#artibody::text",
+      "content": "div#artibody p::text",
       "news_time": "span.date::text"
     }
   ],
