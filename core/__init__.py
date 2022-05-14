@@ -15,6 +15,7 @@ import re
 import logme
 from types import GeneratorType
 from lxml.etree import _Element
+from htmldate import find_date
 import time
 from hashlib import md5
 from datetime import datetime
