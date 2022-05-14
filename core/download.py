@@ -83,7 +83,7 @@ class Downloader(object):
         retry_times = 0
         max_time = int(http_request['sleep_time'])
         sleep_time = random.uniform(1, max_time)
-        max_retry = random.randint(4, 15)
+        max_retry = random.randint(3, 5)
         # https://github.com/PiotrDabkowski/Js2Py   js转python
         while retry_times < max_retry:
             proxy = get_random_proxy() if use_proxy else None
