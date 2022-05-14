@@ -52,8 +52,8 @@
     },
     {
       "result_id": 2,
-      "author": "div.author >div.left > a::text",
-      "news_time": "span.stime::text",
+      "author": "div.bbs-post-content div.user-base-info>a::text",
+      "news_time": "div.bbs-post-content div.user-base-info>span.post-user-comp-info-top-time::text",
       "content": ""
     }
   ],
