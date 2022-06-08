@@ -33,6 +33,7 @@
 - [x] [新浪科技](https://tech.sina.com.cn/)
 - [x] [站酷网](https://www.zcool.com.cn/)
 - [x] [人人都是产品经理](http://www.woshipm.com/)
+- [x] [36kr创投](https://36kr.com/information/contact/)
 
 #### 安装步骤
 
