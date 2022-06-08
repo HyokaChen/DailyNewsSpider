@@ -1,0 +1,52 @@
+{
+  "START_URL": "https://36kr.com/information/contact/",
+  "SPIDER_NAME": "36krNewsSpider",
+  "SITE_NAME": "36kr",
+  "REFERER": "https://36kr.com/information/contact/",
+  "METHOD": "GET",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "method": "GET",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "RESULTS.1.url",
+      "result": "RESULTS.2",
+      "return_type": "css",
+      "is_duplicate": true,
+      "return_item": "items.HotNewsItem"
+    }
+  ],
+  "PROCESSES": [
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "title": "//div[@class='information-flow-list']/div[@class='information-flow-item']//a[contains(@class, 'article-item-title')]/text()#list",
+      "part_url": "//div[@class='information-flow-list']/div[@class='information-flow-item']//a[contains(@class, 'article-item-title')]/@href#list",
+      "url": "$https://36kr.com{part_url}",
+      "author": "//div[@class='information-flow-list']/div[@class='information-flow-item']//a[@class='kr-flow-bar-author']/text()#list",
+      "description": ""
+    },
+    {
+      "result_id": 2,
+      "news_time": "span.item-time::text",
+      "content": "div.articleDetailContent::text"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 10,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@technology",
+  "PRIORITY": 1
+}
+
