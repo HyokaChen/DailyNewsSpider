@@ -32,7 +32,7 @@
     },
     {
       "result_id": 2,
-      "content": "div.content-text::text",
+      "content": "div.content-text p::text",
       "temp_time": "div.wzwz_title span::text",
       "news_time": "(.*) \\W@temp_time#one"
     }
