@@ -34,6 +34,7 @@
 - [x] [站酷网](https://www.zcool.com.cn/)
 - [x] [人人都是产品经理](http://www.woshipm.com/)
 - [x] [36kr创投](https://36kr.com/information/contact/)
+- [x] [投资家](http://www.investorscn.com/zixun/)
 
 #### 安装步骤
 

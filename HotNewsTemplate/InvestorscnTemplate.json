@@ -1,0 +1,52 @@
+{
+  "START_URL": "http://www.investorscn.com/zixun/",
+  "SPIDER_NAME": "InvestorscnSpide",
+  "SITE_NAME": "investorscn",
+  "METHOD": "GET",
+  "REFERER": "http://www.investorscn.com/zixun/",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "return_type": "html",
+      "timeout": "20000",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "RESULTS.1.url",
+      "result": "RESULTS.2",
+      "return_type": "css",
+      "timeout": "20000",
+      "is_duplicate": true,
+      "return_item": "items.FinanceItem"
+    }
+  ],
+  "PROCESSES": [
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "url": "//a[@class='post_title']/@href#list",
+      "title": "//a[@class='post_title']/text()#list"
+    },
+    {
+      "result_id": 2,
+      "content": "div.content-text::text",
+      "temp_time": "div.wzwz_title span::text",
+      "news_time": "(.*) \\W@temp_time#one"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 5,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 100,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@finance",
+  "PRIORITY": 1
+}
+
