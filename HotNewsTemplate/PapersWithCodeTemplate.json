@@ -78,7 +78,7 @@
       "author": "div.authors > p > span::text",
       "description": "div.paper-abstract > div > div > p::text",
       "tags": "div.paper-tasks > div > div > ul.list-unstyled > li > a > span::text",
-      "code": "div#id_paper_implementations_collapsed > div > div > div.paper-impl-cell > a::href"
+      "code": "div#implementations-short-list div.paper-impl-cell > a::href"
     }
   ],
   "RENDER": false,

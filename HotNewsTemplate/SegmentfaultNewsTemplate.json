@@ -1,5 +1,5 @@
 {
-  "START_URL": "https://segmentfault.com/",
+  "START_URL": "https://segmentfault.com/blogs",
   "SPIDER_NAME": "SegmentfaultNewsSpider",
   "SITE_NAME": "segmentfault",
   "REFERER": "https://segmentfault.com/",
@@ -41,10 +41,10 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "title": "//li[contains(@class, 'article-item')]//h6/a/text()#list",
-      "part_url": "//li[contains(@class, 'article-item')]//h6/a/@href#list",
+      "title": "//li[contains(@class, 'list-group-item')]//h5/a/text()#list",
+      "part_url": "//li[contains(@class, 'list-group-item')]//h5/a/@href#list",
       "url": "$https://segmentfault.com{part_url}",
-      "author": "//li[contains(@class, 'article-item')]//div/a/text()#list",
+      "author": "//li[contains(@class, 'list-group-item')]//a[@class='text-primary']/span/text()#list",
       "description": ""
     },
     {
