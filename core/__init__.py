@@ -151,12 +151,11 @@ def _transform_json_content(data, nodes: list):
             if len(inner_nodes) == 1:
                 if isinstance(inner_data, list):
                     results.extend([inn.get(inner_nodes[0]) for inn in inner_data])
-                else:
+                elif inner_data:
                     results.append(inner_data.get(inner_nodes[0]))
             else:
                 node = inner_nodes[0]
-                del inner_nodes[0]
-                inner_nodes = inner_nodes
+                inner_nodes = inner_nodes[1:]
                 temp_data = inner_data.get(node)
                 if isinstance(temp_data, list):
                     # 如果数据是list的形式，则单个继续递归
@@ -165,6 +164,7 @@ def _transform_json_content(data, nodes: list):
                 else:
                     # 如果nodes还有个数，对于单个来说继续递归
                     _get_data(temp_data, inner_nodes)
+                del inner_nodes[0]
         except Exception as e:
             raise e
     _get_data(data, nodes)
@@ -200,6 +200,9 @@ def transform_datetime(date_str, site):
             result = parse(date_str).strftime(DATE_FMT)
         elif SITE_MAP[site] == SiteType.TECH_SINA_NEWS:
             result = parse(date_str, fuzzy_with_tokens=True)[0].strftime(DATE_FMT)
+        elif SITE_MAP[site] == SiteType.ZCOOL:
+            time_int = int(date_str) / 1000
+            result = datetime.fromtimestamp(time_int).strftime(DATE_FMT)
         elif date_str.strip() == '':
             result = datetime.now().strftime(DATE_FMT)
     else:

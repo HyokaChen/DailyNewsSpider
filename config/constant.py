@@ -34,6 +34,7 @@ class SiteType(Enum):
     HACKERNEWS = 8
     TECH_SINA_NEWS = 9
     OS_CHINA = 10
+    ZCOOL = 11
 
 
 @unique
@@ -145,7 +146,8 @@ SITE_MAP = {
     'paperswithcode': SiteType.PAPERSWITHCODE,
     "hackernews": SiteType.HACKERNEWS,
     "tech_sina_news": SiteType.TECH_SINA_NEWS,
-    'oschina': SiteType.OS_CHINA
+    'oschina': SiteType.OS_CHINA,
+    'zcool': SiteType.ZCOOL
 }
 
 # 消息队列

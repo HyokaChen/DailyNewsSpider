@@ -1,5 +1,5 @@
 {
-  "START_URL": "https://www.zcool.com.cn/",
+  "START_URL": "https://www.zcool.com.cn/p1/index/data?p=1&ps=40&column=4",
   "SPIDER_NAME": "ZCoolNewsSpider",
   "SITE_NAME": "zcool",
   "REFERER": "https://www.zcool.com.cn/",
@@ -9,6 +9,7 @@
       "request_id": 1,
       "method": "GET",
       "result": "RESULTS.1",
+      "return_type": "json",
       "next_request": "REQUESTS.2"
     },
     {
@@ -26,14 +27,14 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "title": "//section[contains(@class, 'allWorkList')]/div//div[contains(@class, 'cardImg')]//a/@title#list",
-      "url": "//section[contains(@class, 'allWorkList')]/div//div[contains(@class, 'cardImg')]//a/@href#list",
-      "temp_time": "//section[contains(@class, 'allWorkList')]/div//div[contains(@class, 'cardUserInfo')]/span/@title#list",
-      "news_time": "内容创建时间：(.*)@temp_time#one"
+      "title": "datas>content>title",
+      "part_url": "datas>content>idStr",
+      "url": "$https://www.zcool.com.cn/work/{part_url}.html",
+      "news_time": "datas>content>createTime"
     },
     {
       "result_id": 2,
-      "content": "section.detailContentCss > div > div::text"
+      "content": ".detailContentBox div::text"
     }
   ],
   "RENDER": false,

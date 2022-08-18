@@ -41,8 +41,8 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "title": "//li[contains(@class, 'list-group-item')]//h5/a/text()#list",
-      "part_url": "//li[contains(@class, 'list-group-item')]//h5/a/@href#list",
+      "title": "//li[contains(@class, 'list-group-item')]//h3/a/text()#list",
+      "part_url": "//li[contains(@class, 'list-group-item')]//h3/a/@href#list",
       "url": "$https://segmentfault.com{part_url}",
       "author": "//li[contains(@class, 'list-group-item')]//a[@class='text-primary']/span/text()#list",
       "description": ""
