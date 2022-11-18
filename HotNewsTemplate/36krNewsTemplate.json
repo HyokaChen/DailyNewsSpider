@@ -28,13 +28,13 @@
       "title": "//div[@class='information-flow-list']/div[@class='information-flow-item']//a[contains(@class, 'article-item-title')]/text()#list",
       "part_url": "//div[@class='information-flow-list']/div[@class='information-flow-item']//a[contains(@class, 'article-item-title')]/@href#list",
       "url": "$https://36kr.com{part_url}",
-      "author": "//div[@class='information-flow-list']/div[@class='information-flow-item']//a[@class='kr-flow-bar-author']/text()#list",
-      "description": ""
+      "author": "//div[@class='information-flow-list']/div[@class='information-flow-item']//a[@class='kr-flow-bar-author']/text()#list"
     },
     {
       "result_id": 2,
-      "news_time": "span.item-time::text",
-      "content": "div.articleDetailContent::text"
+      "news_time": "meta[property='article:published_time']::content",
+      "description": "title::text",
+      "content": ""
     }
   ],
   "RENDER": false,
