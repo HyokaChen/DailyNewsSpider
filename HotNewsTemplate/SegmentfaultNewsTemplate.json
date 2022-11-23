@@ -49,7 +49,7 @@
     },
     {
       "result_id": 2,
-      "news_time": "time[itemprop='datePublished']::datetime",
+      "news_time": "time[itemprop='dateCreated']::datetime",
       "content": "article.article::text"
     }
   ],
