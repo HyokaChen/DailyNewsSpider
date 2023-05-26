@@ -1,0 +1,52 @@
+{
+  "START_URL": "https://mlcommons.org/en/news/",
+  "SPIDER_NAME": "MLcommonsSpide",
+  "SITE_NAME": "mlcommons",
+  "METHOD": "GET",
+  "REFERER": "https://mlcommons.org/en/news/",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "return_type": "html",
+      "timeout": "20000",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "RESULTS.1.url",
+      "result": "RESULTS.2",
+      "return_type": "css",
+      "timeout": "20000",
+      "is_duplicate": true,
+      "return_item": "items.NewsItem"
+    }
+  ],
+  "PROCESSES": [
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "part_url": "//a[@class='posts-list__link']/@href#list",
+      "url": "$https://mlcommons.org{part_url}",
+      "title": "//a[@class='posts-list__link']/h2/text()#list"
+    },
+    {
+      "result_id": 2,
+      "content": "div.post-content::text",
+      "news_time": "time[datetime]::datetime"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 5,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 100,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@tencent",
+  "PRIORITY": 1
+}
+

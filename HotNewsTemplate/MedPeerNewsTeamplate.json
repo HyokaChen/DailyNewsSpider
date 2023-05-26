@@ -1,0 +1,54 @@
+{
+  "START_URL": "https://jishu.medpeer.cn/show/news_information/latestNews/cate_id/-1",
+  "SPIDER_NAME": "MedPeerNewsSpider",
+  "SITE_NAME": "medpeer",
+  "REFERER": "https://jishu.medpeer.cn/show/index/index",
+  "METHOD": "GET",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "method": "GET",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "https://jishu.medpeer.cn/show/news_information/getSearchList",
+      "method": "POST",
+      "extra_headers": {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50"
+      },
+      "result": "RESULTS.2",
+      "return_type": "json",
+      "return_item": "items.NewsItem"
+    }
+  ],
+  "PROCESSES": [
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "empty": "EMPTY"
+    },
+    {
+      "result_id": 2,
+      "title": "data>translation_name",
+      "part_url": "data>information_id",
+      "url": "$https://jishu.medpeer.cn/show/news_information/engDetailPage?information_id={part_url}&cate_id=-1",
+      "news_time": "data>publish_time",
+      "content": "data>trans_text"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 10,
+  "USE_PROXY": false,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@tencent",
+  "PRIORITY": 1
+}
+
