@@ -29,7 +29,8 @@
     {
       "result_id": 2,
       "title": ">title",
-      "url": ">url",
+      "part_url": ">url",
+      "url": "$https://zh.tradingeconomics.com{part_url}",
       "description": ">description",
       "news_time": ">date",
       "content": ">description"
