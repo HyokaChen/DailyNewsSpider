@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "Liz2Bird"
+name = "DailyNewsSpider"
 version = "0.1.0"
 description = ""
 authors = ["EmptyChan <chen19941018@live.com>"]
@@ -8,10 +8,9 @@ license = "MIT"
 [[tool.poetry.source]]
 name = "tsinghua"
 url = "https://pypi.tuna.tsinghua.edu.cn/simple"
-default = true
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.11"
 grequests = "*"
 chardet = "*"
 logme = "*"
@@ -30,11 +29,14 @@ python-dateutil = "*"
 envparse = "*"
 html5lib = "*"
 bs4 = "*"
-cchardet = "*"
-httpx = "*"
+xattr="^1.1.0"
+faust-cchardet = "*"
+httpx = {extras = ["socks"], version = "^0.25.0"}
 uvloop = "*"
 PyYaml = "*"
 certifi = "*"
+htmldate = "^1.1.1"
+cython = "^0.29.34"
 
 [tool.poetry.dev-dependencies]
 

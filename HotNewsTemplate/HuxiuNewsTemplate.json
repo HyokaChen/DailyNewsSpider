@@ -1,5 +1,5 @@
 {
-  "START_URL": "https://www.huxiu.com/",
+  "START_URL": "https://www.huxiu.com/article/",
   "SPIDER_NAME": "HuxiuNewsSpider",
   "SITE_NAME": "huxiu",
   "REFERER": "https://www.huxiu.com/",
@@ -8,7 +8,6 @@
     {
       "request_id": 1,
       "method": "GET",
-      "process": "PROCESSES.1",
       "result": "RESULTS.1",
       "next_request": "REQUESTS.2"
     },
@@ -28,23 +27,12 @@
     }
   ],
   "PROCESSES": [
-    {
-      "process_id": 1,
-      "process_method": "spiders.new_tencent_spider.first_process"
-    },
-    {
-      "process_id": 2,
-      "process_method": "spiders.new_tencent_spider.second_process",
-      "parameters": "RESULTS.2.page"
-    }
   ],
   "RESULTS": [
     {
       "result_id": 1,
-      "title": "//div[@class='img-slider']//h5/text()#list",
-      "data_params": "//div[@class='img-slider']//div[@class='imgBox']/@event-track-params#list",
-      "part_url": "aid\":\"(\\d+)@data_params#one",
-      "url": "$https://www.huxiu.com/article/{part_url}.html",
+      "title": "//div[@class='card-container']/div/div/a/h3/text()#list",
+      "url": "//div[@class='card-container']/div/div/a[1]/@href#list",
       "description": ""
     },
     {

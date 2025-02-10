@@ -10,7 +10,6 @@
       "start_url": "https://www.hupu.com/home/v1/news?pageNo=1&pageSize=20",
       "method": "GET",
       "return_type": "json",
-      "process": "PROCESSES.1",
       "result": "RESULTS.1",
       "next_request": "REQUESTS.2"
     },
@@ -32,15 +31,6 @@
     }
   ],
   "PROCESSES": [
-    {
-      "process_id": 1,
-      "process_method": "spiders.new_tencent_spider.first_process"
-    },
-    {
-      "process_id": 2,
-      "process_method": "spiders.new_tencent_spider.second_process",
-      "parameters": "RESULTS.2.page"
-    }
   ],
   "RESULTS": [
     {
@@ -52,8 +42,8 @@
     },
     {
       "result_id": 2,
-      "author": "div.bbs-post-content div.user-base-info>a::text",
-      "news_time": "div.bbs-post-content div.user-base-info>span.post-user-comp-info-top-time::text",
+      "author": "a[class^=post-user_post-user-comp-info-top-name]::text",
+      "news_time": "span[class^=post-user_post-user-comp-info-top-time]::text",
       "content": ""
     }
   ],

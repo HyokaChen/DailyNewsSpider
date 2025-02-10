@@ -1,0 +1,50 @@
+{
+  "START_URL": "https://zh.tradingeconomics.com",
+  "SPIDER_NAME": "TradingEconomicsSpider",
+  "SITE_NAME": "tradingeconomics",
+  "REFERER": "https://zh.tradingeconomics.com",
+  "METHOD": "GET",
+  "REQUESTS": [
+    {
+      "request_id": 1,
+      "method": "GET",
+      "result": "RESULTS.1",
+      "next_request": "REQUESTS.2"
+    },
+    {
+      "request_id": 2,
+      "start_url": "https://zh.tradingeconomics.com/ws/streamlanguages.ashx?start=0&size=20&lang=zh",
+      "return_type": "json",
+      "result": "RESULTS.2",
+      "return_item": "items.FinanceItem"
+    }
+  ],
+  "PROCESSES": [
+  ],
+  "RESULTS": [
+    {
+      "result_id": 1,
+      "empty": true
+    },
+    {
+      "result_id": 2,
+      "title": ">title",
+      "url": ">url",
+      "description": ">description",
+      "news_time": ">date",
+      "content": ">description"
+    }
+  ],
+  "RENDER": false,
+  "TIMEOUT": 10,
+  "USE_PROXY": true,
+  "SLEEP_TIME": 10,
+  "SESSION": true,
+  "MAX_SESSION_TIMES": 10,
+  "COOKIES": "",
+  "RANGE_TIME": "",
+  "RETURN_TYPE": "html",
+  "DATA_TABLE": "mongo@finance",
+  "PRIORITY": 1
+}
+

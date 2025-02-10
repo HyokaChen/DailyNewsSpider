@@ -1,9 +1,9 @@
 {
-  "START_URL": "https://mlcommons.org/en/news/",
+  "START_URL": "https://mlcommons.org/news-blog/",
   "SPIDER_NAME": "MLcommonsSpide",
   "SITE_NAME": "mlcommons",
   "METHOD": "GET",
-  "REFERER": "https://mlcommons.org/en/news/",
+  "REFERER": "https://mlcommons.org/news-blog/",
   "REQUESTS": [
     {
       "request_id": 1,
@@ -27,19 +27,18 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "part_url": "//a[@class='posts-list__link']/@href#list",
-      "url": "$https://mlcommons.org{part_url}",
-      "title": "//a[@class='posts-list__link']/h2/text()#list"
+      "url": "//li//article[contains(@class, 'insight-preview--stacked')]/div/h3/a/@href#list",
+      "title": "//li//article[contains(@class, 'insight-preview--stacked')]/div/h3/a/text()#list"
     },
     {
       "result_id": 2,
       "content": "div.post-content::text",
-      "news_time": "time[datetime]::datetime"
+      "news_time": "meta[property='article:published_time']::content"
     }
   ],
   "RENDER": false,
   "TIMEOUT": 5,
-  "USE_PROXY": false,
+  "USE_PROXY": true,
   "SLEEP_TIME": 100,
   "SESSION": true,
   "MAX_SESSION_TIMES": 10,

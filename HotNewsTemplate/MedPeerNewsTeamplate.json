@@ -32,7 +32,7 @@
     },
     {
       "result_id": 2,
-      "title": "data>translation_name",
+      "title": "data>information_name",
       "part_url": "data>information_id",
       "url": "$https://jishu.medpeer.cn/show/news_information/engDetailPage?information_id={part_url}&cate_id=-1",
       "news_time": "data>publish_time",

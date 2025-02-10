@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 """
  @File       : template.py
  @Time       : 2019-04-16 21:29
@@ -39,11 +38,9 @@ class HyokaTemplate(object):
         self.SLEEP_TIME = data_dict.get("SLEEP_TIME", 0)
         self.SESSION = data_dict.get("SESSION", False)
         self.MAX_SESSION_TIMES = data_dict.get("MAX_SESSION_TIMES", 10)
-        self.RANGE_TIME = (
-            data_dict.get("RANGE_TIME")
-            if data_dict.get("RANGE_TIME") != ""
-            else datetime.now().strftime(DAILY_FORMAT) + "#"
-        )
+        self.RANGE_TIME = (data_dict.get("RANGE_TIME")
+                           if data_dict.get("RANGE_TIME") != "" else
+                           datetime.now().strftime(DAILY_FORMAT) + "#")
         self.RETURN_TYPE = data_dict.get("RETURN_TYPE", "text")
         self.DATA_TABLE = data_dict.get("DATA_TABLE", None)
         self.PRIORITY = data_dict.get("PRIORITY", 0)
@@ -73,7 +70,7 @@ class ReadTemplateJson(object):
         读取templates路径下的所有json模板文件
         :return: 模板实体对象集合
         """
-        if 'Template' in str(dir_path) and ".json" in str(dir_path):
+        if ".json" in str(dir_path):
             with codecs.open(dir_path, encoding="utf-8") as f:
                 _temp_dict = json.load(f)
             yield _temp_dict  # HyokaTemplate(_temp_dict)
@@ -81,8 +78,9 @@ class ReadTemplateJson(object):
             # yaml.safe_load('xx.yaml')
             all_files = os.listdir(dir_path)
             for file in all_files:
-                if 'Template' in str(file) and ".json" in str(file):
-                    file_path = "{path}{template_name}".format(path=dir_path, template_name=file)
+                if ".json" in str(file):
+                    file_path = "{path}{template_name}".format(
+                        path=dir_path, template_name=file)
                     print('===>' + file_path)
                     if not os.path.exists(file_path):
                         raise FileExistsError("Path is error!")
@@ -100,7 +98,8 @@ class ReadTemplateJson(object):
         """
         path = "{0}" + os.sep + "{name}.json".format(dir_path, name=name)
         if not os.path.exists(path):
-            assert None, "{name}.json is not in templates folder".format(name=name)
+            assert None, "{name}.json is not in templates folder".format(
+                name=name)
         if not os.path.exists(path):
             raise FileExistsError("Path is error!")
         with codecs.open(path, encoding="utf-8") as f:

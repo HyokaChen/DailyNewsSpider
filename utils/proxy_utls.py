@@ -16,15 +16,14 @@ from utils.decorator import safely_json_loads
 from utils.db_util import rdb
 from utils import UserAgent
 import random
+
 ua = UserAgent()
 
 
 def get_random_proxy():
-    result = {
-        'http://': 'http://127.0.0.1:7890',
-        'https://': 'http://127.0.0.1:7890'
-    }
+    result = {"http://": "http://127.0.0.1:7890", "https://": "http://127.0.0.1:7890"}
     return result
+
 
 # async def get_random_proxy():
 #     session = aiorequests.session()

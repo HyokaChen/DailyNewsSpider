@@ -8,30 +8,35 @@
  @Description:
  @License    : (C) Copyright 2016-2017, iFuture Corporation Limited.
 """
-import sys
-import random
 import asyncio
-import time
-import logme
 import datetime
-from utils.color import Colored
-from config.constant import (LEFT_BRACE, RIGHT_BRACE, REQUESTS_TOPIC,
-                             PROCESSES_TOPIC, DOT, DOLLAR, DAILY_FORMAT,
-                             RESULTS_TOPIC, TASK_TOPIC, SpiderStatus, AND,
-                             WayType, HASH_MAP, AT, HASH, EXCLUDE_FIELD,
-                             DIAGONAL, GREATER_THAN, UNDER_LINE,
-                             TEMPLATES_TOPIC, COLON)
-from core.middleware import TemplateMiddleware, DownloadMiddleware, QueueMiddleware
-from core.template import ReadTemplateJson
-from core.http import HTTPRequestTemplate, HTTPResultTemplate, HTTPProcessTemplate
-from config.constant import PROCESSES, RESULTS, REQUESTS
-from core.download import Downloader
-from core.queue import TaskQueue, Task
-from core.pipeline import ProcessContent
-from core import format_data, is_in_range_time, to_dict_2, process_raw_value, sort_time
-from utils.format_utils import load_item, load_method
+import random
 import re
+import sys
+import time
 from copy import deepcopy
+
+import logme
+
+from config.constant import (AND, AT, COLON, DAILY_FORMAT, DIAGONAL, DOLLAR,
+                             DOT, EXCLUDE_FIELD, GREATER_THAN, HASH, HASH_MAP,
+                             LEFT_BRACE, PROCESSES, PROCESSES_TOPIC, REQUESTS,
+                             REQUESTS_TOPIC, RESULTS, RESULTS_TOPIC,
+                             RIGHT_BRACE, TASK_TOPIC, TEMPLATES_TOPIC,
+                             UNDER_LINE, SpiderStatus, WayType)
+from core import (format_data, is_in_range_time, process_raw_value, sort_time,
+                  to_dict_2)
+from core.download import Downloader
+from core.http import (HTTPProcessTemplate, HTTPRequestTemplate,
+                       HTTPResultTemplate)
+from core.middleware import (DownloadMiddleware, QueueMiddleware,
+                             TemplateMiddleware)
+from core.pipeline import ProcessContent
+from core.queue import Task, TaskQueue
+from core.template import ReadTemplateJson
+from utils.color import Colored
+from utils.format_utils import load_item, load_method
+
 try:
     import uvloop
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
@@ -100,7 +105,7 @@ class Liz2Bird(object):
             for task in pendings:
                 task.cancel()
             loop.run_until_complete(
-                asyncio.gather(*pendings, loop=loop, return_exceptions=True))
+                asyncio.gather(*pendings,  return_exceptions=True))
 
             for task in pendings:
                 if task.cancelled():
@@ -539,7 +544,7 @@ class Liz2Bird(object):
                                         key=task.process_id)
         processed_content = content
         if task.process_id is not None and process_bytes is None:
-            raise Exception('没有找到 process method：{0}！'.format(task.process_id))
+            raise Exception('没有找到 process method：{0} => {1}！'.format(task.process_id, task.request))
         elif process_bytes is not None:
             process_template = self.middlewares[2].middle_origin2engine(
                 process_bytes)[0]

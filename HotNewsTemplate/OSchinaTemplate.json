@@ -10,7 +10,6 @@
       "extra_headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36 Edg/90.0.818.42"
       },
-      "process": "PROCESSES.1",
       "timeout": "20000",
       "return_type": "html",
       "result": "RESULTS.1",
@@ -32,15 +31,6 @@
     }
   ],
   "PROCESSES": [
-    {
-      "process_id": 1,
-      "process_method": "spiders.new_tencent_spider.first_process"
-    },
-    {
-      "process_id": 2,
-      "process_method": "spiders.new_tencent_spider.second_process",
-      "parameters": "RESULTS.2.page"
-    }
   ],
   "RESULTS": [
     {
