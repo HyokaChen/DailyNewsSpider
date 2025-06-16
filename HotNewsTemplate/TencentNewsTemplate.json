@@ -13,7 +13,23 @@
     },
     {
       "request_id": 2,
-      "start_url": "https://i.news.qq.com/trpc.qqnews_web.kv_srv.kv_srv_http_proxy/list?sub_srv_id=ent&srv_id=pc&offset=0&limit=20&strategy=1&ext={\"pool\":[\"high\",\"top\"],\"is_filter\":10,\"check_type\":true}",
+      "start_url": "https://i.news.qq.com/web_feed/getPCList",
+      "method": "POST",
+      "post_data": {
+        "base_req": {"from":"pc"},
+        "forward": "1",
+        "qimei36": "0_38CYRKxDy23cF",
+        "device_id": "0_38CYRKxDy23cF",
+        "flush_num": 1,
+        "channel_id": "news_news_ent",
+        "item_count": 12,
+        "is_local_chlid": "0"
+      },
+      "extra_headers": {
+        "origin": "https://news.qq.com",
+        "content-type": "application/json;charset=UTF-8",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0"
+      },
       "return_type": "json",
       "result": "RESULTS.2",
       "next_request": "REQUESTS.3"
@@ -36,13 +52,16 @@
     },
     {
       "result_id": 2,
-      "title": "data>list>title",
-      "url": "data>list>url",
-      "news_time": "data>list>publish_time"
+      "title": "data>title",
+      "part_url": "data>id",
+      "author": "data>media_info>chl_name",
+      "url": "$https://news.qq.com/rain/a/{part_url}",
+      "news_time": "data>publish_time",
+      "description": "data>desc"
     },
     {
       "result_id": 3,
-      "content": "//div[@class='content-article']/p/text()#text"
+      "content": ""
     }
   ],
   "RENDER": false,

@@ -108,7 +108,7 @@ class Downloader(object):
                     elif method == POST:
                         request: Coroutine = session.post(
                             url,
-                            data=posts_data,
+                            json=posts_data,
                             headers=headers,
                             timeout=timeout,
                             cookies=cookies,

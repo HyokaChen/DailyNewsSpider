@@ -1,8 +1,8 @@
 {
-  "START_URL": "https://www.idmzj.com",
+  "START_URL": "https://news.idmzj.com",
   "SPIDER_NAME": "DmzjNewsSpider",
   "SITE_NAME": "dmzj",
-  "REFERER": "https://www.idmzj.com/",
+  "REFERER": "https://news.idmzj.com/",
   "METHOD": "GET",
   "REQUESTS": [
     {

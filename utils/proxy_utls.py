@@ -21,7 +21,7 @@ ua = UserAgent()
 
 
 def get_random_proxy():
-    result = {"http://": "http://127.0.0.1:7890", "https://": "http://127.0.0.1:7890"}
+    result = {"http://": "http://127.0.0.1:7897", "https://": "http://127.0.0.1:7897"}
     return result
 
 

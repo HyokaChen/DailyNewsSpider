@@ -25,7 +25,7 @@
   "RESULTS": [
     {
       "result_id": 1,
-      "part_url": "head link#preloadBg::href",
+      "part_url": "meta[property=\"og:image\"]::content",
       "url": "$https://cn.bing.com{part_url}"
     }
   ],

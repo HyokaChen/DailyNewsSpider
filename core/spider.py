@@ -14,6 +14,7 @@ import random
 import re
 import sys
 import time
+import json
 from copy import deepcopy
 
 import logme
@@ -902,7 +903,9 @@ class Liz2Bird(object):
                 format(expression)))
         try:
             # 表达式中包含dot
-            if DOT in expression and 'http' not in expression:
+            if isinstance(expression, int):
+                expression_result = {str(expression): expression}
+            elif DOT in expression and 'http' not in expression:
                 left, rights = expression.split(DOT, 1)
                 # 包含process处理
                 if left == PROCESSES:
@@ -934,6 +937,8 @@ class Liz2Bird(object):
                     parameter_name = rights
                     value = parameters.get(parameter_name, None)
                     expression_result = {parameter_name: value}
+            elif isinstance(expression, dict):
+                expression_result = {json.dumps(expression): expression}
             else:
                 expression_result = {expression: expression}
         except Exception as e:

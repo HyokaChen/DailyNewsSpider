@@ -1,9 +1,9 @@
 {
-  "START_URL": "https://mlcommons.org/news-blog/",
+  "START_URL": "https://mlcommons.org/category/news/",
   "SPIDER_NAME": "MLcommonsSpide",
   "SITE_NAME": "mlcommons",
   "METHOD": "GET",
-  "REFERER": "https://mlcommons.org/news-blog/",
+  "REFERER": "https://mlcommons.org/category/news/",
   "REQUESTS": [
     {
       "request_id": 1,
@@ -33,6 +33,11 @@
     {
       "result_id": 2,
       "content": "div.post-content::text",
+      "extra_headers": {
+        "cookie": "icwp-wpsf-notbot=notbotZexp-1750090248",
+        "Referer": "https://mlcommons.org/category/news/",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36 Edg/90.0.818.42"
+      },
       "news_time": "meta[property='article:published_time']::content"
     }
   ],

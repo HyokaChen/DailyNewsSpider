@@ -40,10 +40,10 @@
     {
       "result_id": 2,
       "title": "h1.article-box__title > a::text",
-      "author": "div.article-box__meta div:nth-child(2) a::text",
+      "author": "div.article-box__meta div:nth-child(1)::text",
       "description": "",
       "content": "div.article-detail > div.content::text",
-      "news_time": "div.article-box__meta  div:nth-child(3)::text"
+      "news_time": "div.article-box__meta  div:nth-child(2)::text"
     }
   ],
   "RENDER": false,
