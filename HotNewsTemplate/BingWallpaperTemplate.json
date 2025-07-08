@@ -26,7 +26,8 @@
     {
       "result_id": 1,
       "part_url": "meta[property=\"og:image\"]::content",
-      "url": "$https://cn.bing.com{part_url}"
+      "part_": "(.*_)tmb@part_url#one",
+      "url": "${part_}1920x1080.jpg"
     }
   ],
   "RENDER": false,
@@ -41,4 +42,3 @@
   "DATA_TABLE": "mongo@wallpaper",
   "PRIORITY": 1
 }
-

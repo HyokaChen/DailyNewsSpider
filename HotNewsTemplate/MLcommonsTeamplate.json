@@ -43,7 +43,7 @@
   ],
   "RENDER": false,
   "TIMEOUT": 5,
-  "USE_PROXY": true,
+  "USE_PROXY": false,
   "SLEEP_TIME": 100,
   "SESSION": true,
   "MAX_SESSION_TIMES": 10,
