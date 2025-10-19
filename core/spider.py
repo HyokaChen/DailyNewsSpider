@@ -97,33 +97,13 @@ class Liz2Bird(object):
         :param is_master: 是否是主节点
         :return:
         """
-        loop = asyncio.get_event_loop()
         try:
-            loop.run_until_complete(self._start(is_master))
+            asyncio.run(self._start(is_master))
         except (KeyboardInterrupt, SystemExit):
-            tasks = list(asyncio.all_tasks(loop))
-            pendings = {t for t in tasks if not t.done()}
-            for task in pendings:
-                task.cancel()
-            loop.run_until_complete(
-                asyncio.gather(*pendings,  return_exceptions=True))
-
-            for task in pendings:
-                if task.cancelled():
-                    continue
-                if task.exception() is not None:
-                    loop.call_exception_handler({
-                        'message':
-                        'unhandled exception during asyncio.run() shutdown',
-                        'exception': task.exception(),
-                        'task': task,
-                    })
-
-            if sys.version_info >= (3, 6):  # don't use PY_36 to pass mypy
-                loop.run_until_complete(loop.shutdown_asyncgens())
+            pass
         finally:
             self.stop()
-            loop.close()
+            # loop.close()
             self.logger.info(
                 Colored.yellow("[Liz2Bird]: Shut down....(@ $ _ $ @)----"))
 
